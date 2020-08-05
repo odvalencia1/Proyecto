@@ -33,10 +33,10 @@ public class MainController {
 	}
 	
 	
-	@GetMapping(value="/elements.html")
+	@GetMapping(value="/contact")
 	public String elemets(Model model) {
 		//el retorno de la vista  que se va a desplegar
-		return "elements";
+		return "contact";
 	}
 	
 	@GetMapping(value="/login")

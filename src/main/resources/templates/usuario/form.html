@@ -41,6 +41,7 @@
 									</div>
 									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{nombre}">
+                                    <small class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>	
                                     </div> 
                                     </div>
                                                                      
@@ -52,7 +53,8 @@
 									<i class="fa fa-lock fa-2x"></i>
 									</div>
 									<div class="col-11">								
-                                    <input type="text" class="form-control" th:field="*{password}">
+                                    <input type="password" class="form-control" th:field="*{password}">
+                                    <small class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>	
                                     </div> 
                                     </div>			
                                     
@@ -65,12 +67,13 @@
 									</div>
 									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{artista.nombreArtistico}">
+                                    <small class="invalid-feedback" th:if="${#fields.hasErrors('artista.nombreArtistico')}" th:errors="*{artista.nombreArtistico}"></small>	
                                     </div> 
                                     </div>			
                                     
                                     </div>
                                                                       
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">N&uacute;mero Telef&oacute;nico</label>
                                     <div class="row d-flex align-items-center">	
@@ -79,6 +82,7 @@
 									</div>
 									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{artista.numeroTelefonico}">
+                                    <small class="invalid-feedback" th:if="${#fields.hasErrors('artista.numeroTelefonico')}" th:errors="*{artista.numeroTelefonico}"></small>	
                                     </div> 						
                                     
                                      </div>
@@ -87,10 +91,11 @@
                                     <label for="exampleInputEmail1">Correo</label>
                                     <div class="row d-flex align-items-center">	
                                     <div class="col-1">
-									<i class="fa fa-email fa-2x"></i>
+									<i class="fa fa-envelope-o fa-2x"></i>
 									</div>
 									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{artista.correo}">
+                                    <small class="invalid-feedback" th:if="${#fields.hasErrors('artista.correo')}" th:errors="*{artista.correo}"></small>	
                                     </div>						
                                     
                                      </div>                                 
@@ -99,10 +104,11 @@
                                     <label for="exampleInputEmail1">Precio</label>
                                     <div class="row d-flex align-items-center">
                                     <div class="col-1">
-									<i class="fa fa-money fa-2x"></i>
+									<i class="fa fa-usd fa-2x"></i>
 									</div>
 									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{artista.costo}">
+                                    <small class="invalid-feedback" th:if="${#fields.hasErrors('artista.costo')}" th:errors="*{artista.costo}"></small>	
                                     </div>		
                                     
                                     </div>                             
@@ -111,10 +117,11 @@
                                     <label for="exampleInputEmail1">Video Presentaci&oacute;n</label>
 									<div class="row d-flex align-items-center">
 									<div class="col-1">
-									<i class="fa fa-phone fa-2x"></i>
+									<i class="fa fa-video-camera fa-2x"></i>
 									</div>
 									<div class="col-11">								
                                     <input type="url" class="form-control" th:field="*{artista.video}">
+                                    <small class="invalid-feedback" th:if="${#fields.hasErrors('artista.video')}" th:errors="*{artista.video}"></small>	
                                     </div>
                                     
                                       </div>                                
@@ -160,7 +167,7 @@
                                     <label for="exampleInputEmail1">Imagen</label>
                                     <div class="row d-flex align-items-center">	
                                     <div class="col-1">
-									<i class="fa fa-p fa-2x"></i>
+									<i class="fa fa-camera fa-2x"></i>
 									</div>
 									<div class="col-11">								
                                     <label for="file" > 

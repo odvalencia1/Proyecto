@@ -61,7 +61,15 @@ public class ArtistaController {
 		return "artista/card";
 		}
 	}
-	
+	@PostMapping(value="/buscar")
+	public String buscar (@RequestParam(value="nombre",defaultValue = "Widinson")String nombre, Model model, RedirectAttributes flash) {
+		List<Artista> artistas = srvArtista.findNombre(nombre);
+		
+		model.addAttribute("artistas",artistas);
+		List<Genero> generos = srvGenero.findAll();
+		model.addAttribute("generos",generos);
+		return "artista/list";
+	}
 	@GetMapping(value="/ver/{id}")
 	public String ver (@PathVariable(value="id")Integer id, Model model, RedirectAttributes flash) {
 		Artista artista = srvArtista.findById(id);
@@ -71,7 +79,7 @@ public class ArtistaController {
 		}
 		else {
 		model.addAttribute("artista",artista);
-		model.addAttribute("title","Registro de "+" " + artista.getNombreArtistico());
+		model.addAttribute("title","Artista ");
 		List<Genero> generos = srvGenero.findAll();
 		model.addAttribute("generos",generos);
 		return "artista/ver";

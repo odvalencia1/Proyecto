@@ -1,6 +1,7 @@
+
 (function ($) {
     'use strict';
-
+        
     var browserWindow = $(window);
 
     // :: 1.0 Preloader Active Code

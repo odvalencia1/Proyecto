@@ -43,4 +43,11 @@ public class ArtistaService implements IArtistaService {
 		// TODO Auto-generated method stub
 		return (List<Artista> )dao.findAll();
 	}
+	
+	@Override
+	@Transactional
+	public List<Artista> findNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return (List<Artista> )dao.findByNombreArtisticoLike(nombre);
+	}
 }

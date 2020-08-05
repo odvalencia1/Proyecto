@@ -64,8 +64,14 @@ public class UsuarioController {
 		artista.setNombreArtistico(usuario.getArtista().getNombreArtistico());
 		artista.setCorreo(usuario.getArtista().getCorreo());
 		artista.setGenero(usuario.getArtista().getGenero());
+		artista.setCosto(usuario.getArtista().getCosto());
+		artista.setNumeroTelefonico(usuario.getArtista().getNumeroTelefonico());
+		artista.setVideo(usuario.getArtista().getVideo());
+		artista.setLinkFacebook(usuario.getArtista().getLinkFacebook());
+		artista.setLinkInstagram(usuario.getArtista().getLinkInstagram());
+		artista.setLinkTwitter(usuario.getArtista().getLinkTwitter());
 		if(!foto.isEmpty()) {
-			Path directorioRecursos = Paths.get("src//main//resources//static//uploads");
+			Path directorioRecursos = Paths.get("src//main//resources//static//foto");
 			String rootPath = directorioRecursos.toFile().getAbsolutePath();
 			try {
 				

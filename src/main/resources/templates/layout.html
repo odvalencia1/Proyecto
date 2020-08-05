@@ -57,13 +57,8 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a  th:href="@{/}">Inicio</a></li>
-                                    <li><a href="#">Artistas</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Lista</a></li>
-                                            <li><a href="albums-store.html">Buscar</a></li>
-                                            </ul>
-                                    </li>
-                                        <li><a href="contact.html">Contactos</a></li>
+                                    <li><a th:href="@{/artista/list}">Artistas</a></li>
+                                        <li><a th:href="@{/contact}">Contactos</a></li>
                                 </ul>
 
                                 <!-- Login/Register & Cart Button -->
@@ -113,24 +108,24 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a  th:href="@{/}">Inicio</a></li>
-                                    <li><a href="#">Artista</a>
+                                    <li><a href="#">Administrar</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html">Eventos</a></li>
                                             <li><a th:href="@{/integrante/add}">Integrantes</a></li>
                                             </ul>
                                     </li>
-                                        <li><a href="contact.html">Contactos</a></li>
+                                        <li><a th:href="@{/contact}">Contactos</a></li>
                                 </ul>
 
                                 <!-- Login/Register & Cart Button -->
                                 <div class="login-register-cart-button d-flex align-items-center">
                                     <!-- Login/Register -->
                                     <div class="login-register-btn mr-50" >
-                                        <i class="fa fa-user"></i>&nbsp;<a href="#"><span
+                                        <a href="#"><span
 									sec:authentication="name"></span></a>
 								<div sec:authorize="isAuthenticated()">
 									<form id="frmLogout" th:action="@{/logout}" method="post">
-										<i class="fas fa-sign-out-alt"></i>&nbsp;<a href="#" id="loginBtn"
+										<a href="#"
 											onclick="document.getElementById('frmLogout').submit();">Salir</a>
 										<input type="hidden" th:name="${_csrf.parameterName}"
 											th:value="${_csrf.token}" />
