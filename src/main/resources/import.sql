@@ -1,0 +1,12 @@
+INSERT INTO  generos(pk_genero, nombre) VALUES(1,'Pasillo');
+INSERT INTO  generos(pk_genero, nombre) VALUES(2,'Sanjuanito');
+INSERT INTO  generos(pk_genero, nombre) VALUES(3,'Salsa');
+INSERT INTO  generos(pk_genero, nombre) VALUES(4,'Musica Tropical');
+INSERT INTO  generos(pk_genero, nombre) VALUES(5,'Bomba');
+INSERT INTO  generos(pk_genero, nombre) VALUES(6,'Cumbia');
+INSERT INTO  generos(pk_genero, nombre) VALUES(7,'Pop');
+INSERT INTO  generos(pk_genero, nombre) VALUES(8,'Rock');
+INSERT INTO  generos(pk_genero, nombre) VALUES(9,'Folk');
+INSERT INTO  estados(pk_estado, nombre) VALUES(1,'En espera');
+INSERT INTO  estados(pk_estado, nombre) VALUES(2,'Aprovado');
+INSERT INTO  estados(pk_estado, nombre) VALUES(3,'Rechazado');
