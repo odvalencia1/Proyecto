@@ -33,47 +33,159 @@
                         <div class="login-form">
                             <form th:action="@{/usuario/save}" th:object="${usuario}" method="post"enctype="multipart/form-data"
 					id="fileUploadForm">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Nombre de Usuario</label>
-                                    								
+                                <div class="form-group ">
+                                <label for="exampleInputEmail1">Nombre de Usuario</label>
+                                	<div class="row d-flex align-items-center">
+                                     <div class="col-1">
+									<i class="fa fa-user fa-2x"></i>
+									</div>
+									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{nombre}">
-                                                                      
+                                    </div> 
+                                    </div>
+                                                                     
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Contrase&ntilde;a</label>
-                                    								
+                                    <div class="row d-flex align-items-center">
+                                     <div class="col-1">
+									<i class="fa fa-lock fa-2x"></i>
+									</div>
+									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{password}">
-                                                                      
-                                </div>
+                                    </div> 
+                                    </div>			
+                                    
+                                    </div>
                                  <div class="form-group">
                                     <label for="exampleInputEmail1">Nombre Art&iacute;stico</label>
-                                    								
+                                    <div class="row d-flex align-items-center">
+                                     <div class="col-1">
+									<i class="fa fa-font fa-2x"></i>
+									</div>
+									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{artista.nombreArtistico}">
+                                    </div> 
+                                    </div>			
+                                    
+                                    </div>
                                                                       
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">N&uacute;mero Telef&oacute;nico</label>
-                                    								
+                                    <div class="row d-flex align-items-center">	
+                                    <div class="col-1">
+									<i class="fa fa-phone fa-2x"></i>
+									</div>
+									<div class="col-11">								
                                     <input type="text" class="form-control" th:field="*{artista.numeroTelefonico}">
-                                                                      
+                                    </div> 						
+                                    
+                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Correo</label>
+                                    <div class="row d-flex align-items-center">	
+                                    <div class="col-1">
+									<i class="fa fa-email fa-2x"></i>
+									</div>
+									<div class="col-11">								
+                                    <input type="text" class="form-control" th:field="*{artista.correo}">
+                                    </div>						
+                                    
+                                     </div>                                 
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Precio</label>
+                                    <div class="row d-flex align-items-center">
+                                    <div class="col-1">
+									<i class="fa fa-money fa-2x"></i>
+									</div>
+									<div class="col-11">								
+                                    <input type="text" class="form-control" th:field="*{artista.costo}">
+                                    </div>		
+                                    
+                                    </div>                             
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Video Presentaci&oacute;n</label>
+									<div class="row d-flex align-items-center">
+									<div class="col-1">
+									<i class="fa fa-phone fa-2x"></i>
+									</div>
+									<div class="col-11">								
+                                    <input type="url" class="form-control" th:field="*{artista.video}">
+                                    </div>
+                                    
+                                      </div>                                
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Direcci&oacute;n Facebook</label>
+									<div class="row d-flex align-items-center">
+									<div class="col-1">
+									<i class="fa fa-facebook fa-2x"></i>
+									</div>
+									<div class="col-11">								
+                                    <input type="url" class="form-control" th:field="*{artista.linkFacebook}">
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Direcci&oacute;n Instagram</label>
+									<div class="row d-flex align-items-center">
+									<div class="col-1">
+									<i class="fa fa-instagram fa-2x"></i>
+									</div>
+									<div class="col-11">								
+                                    <input type="url" class="form-control" th:field="*{artista.linkInstagram}">
+                                    </div>
+                                    
+                                    
+                                    </div>                                  
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Direcci&oacute;n Twitter</label>
+									<div class="row d-flex align-items-center">
+									<div class="col-1">
+									<i class="fa fa-twitter fa-2x"></i>
+									</div>
+									<div class="col-11">								
+                                    <input type="url" class="form-control" th:field="*{artista.linkTwitter}">
+                                    </div>
+                                    
+                                     </div>                                
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Imagen</label>
-                                    								
+                                    <div class="row d-flex align-items-center">	
+                                    <div class="col-1">
+									<i class="fa fa-p fa-2x"></i>
+									</div>
+									<div class="col-11">								
                                     <label for="file" > 
-							<input type="file" name="file" /> 
-							</label>
+										<input type="file" name="file" /> 
+										</label>
+                                    </div>							
+	                                    
+									</div>
                                                                       
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">G&eacute;nero</label>
-                                    								
-                                    
-                                      <select class="form-control" th:field="*{artista.genero.idGenero}">
-								<option value=0>- Seleccione -</option>
-								<option th:each="ar: ${generos}" th:value="${ar.idGenero}"
-									th:text="${ar.nombre}"></option>
-							</select>                                
+                                    <div class="row d-flex align-items-center">
+                                    <div class="col-1">
+									<i class="fa fa-music fa-2x"></i>
+									</div>
+									<div class="col-11">								
+                                    <select class="form-control" th:field="*{artista.genero.idGenero}">
+											<option value=0>- Seleccione -</option>
+											<option th:each="ar: ${generos}" th:value="${ar.idGenero}"
+												th:text="${ar.nombre}"></option>
+										</select> 
+                                    </div>               
+                                        
+									</div>                             
                                 </div>
                                 
                                 <button type="submit" class="btn oneMusic-btn mt-30"> <i class="fa fa-check" ></i> &nbsp;Guardar </button>
