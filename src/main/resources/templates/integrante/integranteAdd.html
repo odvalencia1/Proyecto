@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout :: frgHead">
+</head>
+<body>
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<header th:replace="layout :: frgHeader"></header>
+	<section class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(img/bg-img/breadcumb3.jpg);">
+		<div class="bradcumbContent">
+			<h2>Integrantes</h2>
+		</div>
+	</section>
+	<section class="contact-area mt-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="contact-content">
+						<div class="row">
+							<div class="col-12">
+
+								<div class="contact-form-area wow fadeInUp"
+									data-wow-delay="500ms">
+									<table class="table table-hover">
+										<thead class="bg-light">
+											<tr>
+												<th><i class="fa fa-user"></i></th>
+												<th><i class="fa fa-music"></i></th>
+												<th><i class="fa fa-picture-o"></i></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="i : ${integrantes}">
+												<td th:text="${i}"></td>
+												<td th:text="${i.instrumento}"></td>
+												<td>
+													<img th:src="@{/uploads/} + ${i.foto}" width="80"
+													height="80" class="rounded-circle" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+
+
+						<form id="frmParticipante" class="contact-form-area ml-3 mr-3"
+							th:object="${integrante}" th:action="@{/integrante/save}"
+							method="post" enctype="multipart/form-data">
+
+							<div class="row">
+
+								<label>AGREGAR NUEVO INTEGRANTE</label>
+							</div>
+
+
+							<table class="table table-bordered table-hover"
+								id="tablaIntegrantes">
+								<tr>
+									<th>Nombre</th>
+									<th>Apellido</th>
+									<th>Instrumento</th>
+									<th>Foto</th>
+								</tr>
+
+								<tr>
+									<td><input type="text" class="form-control"
+										placeholder="Nombre" th:field="*{nombre}" required></td>
+									<td><input type="text" class="form-control"
+										placeholder="Apellido" th:field="*{apellido}" required></td>
+									<td><select th:field="*{instrumento}" class="form-control" required>
+											<option value="Primera voz">Primera voz</option>
+											<option value="Segunda voz">Segunda voz</option>
+											<option value="Tercera voz">Tercera voz</option>
+											<option value="Requinto">Requinto</option>
+											<option value="Bajo">Bajo</option>
+											<option value="Guitarra acustica">Guitarra acustica</option>
+											<option value="Guitarra electrica">Guitarra electrica</option>
+											<option value="Bateria">Bateria</option>
+											<option value="Timbales">Timbales</option>
+											<option value="Bongos">Bongos</option>
+											<option value="Teclados">Teclados</option>
+											<option value="Saxofon">Saxofon</option>
+											<option value="Trompeta">Trompeta</option>
+									</select></td>
+									<td><input type="file" class="form-control" name="file"
+										id="file" required></td>
+								</tr>
+							</table>
+							<button type="submit" class="btn oneMusic-btn mt-30">
+								<i class="fa fa-check"></i> &nbsp;Guardar
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<!-- ##### Login Area End ##### -->
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+</body>
+</html>
+
+<script type="text/javascript">
+	/*$(document).on('ready', funcPrincipal);
+
+	function funcPrincipal() {
+		$("#nuevoIntegrante").on('click', funcNuevoIntegrante);
+
+	}
+
+	function funcNuevoIntegrante() {
+
+		$("#tablaIntegrantes").append(
+				$('<tr>').append(
+						$('<td>').append(
+								$('<input>').attr('type', 'text').addClass(
+										'form-cotrol'))).append(
+						$('<td>').append(
+								$('<input>').attr('type', 'text').addClass(
+										'form-cotrol'))).append(
+						$('<td>').append(
+								$('<input>').attr('type', 'text').addClass(
+										'form-cotrol')))
+
+				.append(
+						$('<td>').addClass('text-center').append(
+								$('<button>').addClass('btn btn-success').text(
+										'Guardar')).append(
+								$('<button>').addClass('btn btn-danger').text(
+										'Eliminar'))
+
+				))
+	}*/
+</script>

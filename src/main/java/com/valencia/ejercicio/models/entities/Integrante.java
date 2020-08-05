@@ -12,8 +12,14 @@ import javax.persistence.Table;
 @Table(name="integrantes")
 public class Integrante extends Persona implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
 	@Column(name="foto")
 	private String foto;
+	
+	@Column(name="instrumento")
+	private String instrumento;
+	
+	
 	public Integrante() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -28,6 +34,16 @@ public class Integrante extends Persona implements Serializable{
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	
+	
+	public String getInstrumento() {
+		return instrumento;
+	}
+	public void setInstrumento(String instrumento) {
+		this.instrumento = instrumento;
+	}
+
+
 	//relaciones
 	@JoinColumn(name="fk_artista",referencedColumnName="pk_artista")
 	@ManyToOne
@@ -38,5 +54,13 @@ public class Integrante extends Persona implements Serializable{
 	public void setArtista(Artista artista) {
 		this.artista = artista;
 	}
+	@Override
+	public String toString() {
+		return this.getNombre() + " " + this.getApellido();
+	}
+	
+	
+	
+	
 	
 }
