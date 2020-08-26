@@ -15,7 +15,9 @@
     <link rel="icon" th:href="@{/img/core-img/favicon.ico}">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
 </head>
 <body>
 <!-- Preloader -->
@@ -80,7 +82,7 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
-	<header class="header-area" th:fragment="frgHeader" sec:authorize="isAuthenticated()">
+	<header class="header-area" th:fragment="frgHeader" sec:authorize="hasRole('ROLE_USER')">
         <!-- Navbar Area -->
         <div class="oneMusic-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -110,7 +112,7 @@
                                     <li><a  th:href="@{/}">Inicio</a></li>
                                     <li><a href="#">Administrar</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Eventos</a></li>
+                                            <li><a th:href="@{/evento/list}">Eventos</a></li>
                                             <li><a th:href="@{/integrante/add}">Integrantes</a></li>
                                             </ul>
                                     </li>
@@ -144,9 +146,75 @@
             </div>
         </div>
     </header>
+    
     <!-- ##### Header Area End ##### -->
     
+<header class="header-area" th:fragment="frgHeader" sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <!-- Navbar Area -->
+        <div class="oneMusic-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
 
+                        <!-- Nav brand -->
+                        <a th:href="@{/}" class="nav-brand"><img th:src="@{/img/core-img/logo.png}" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a  th:href="@{/}">Inicio</a></li>
+                                    <li><a href="#">Administrar</a>
+                                        <ul class="dropdown">
+                                            <li><a th:href="@{/genero/list}">Géneros</a></li>
+                                            <li><a th:href="@{/instrumento/list}">Instrumentos</a></li>
+                                            </ul>
+                                    </li>
+                                        <li><a th:href="@{/contact}">Contactos</a></li>
+                                </ul>
+
+                                <!-- Login/Register & Cart Button -->
+                                <div class="login-register-cart-button d-flex align-items-center">
+                                    <!-- Login/Register -->
+                                    <div class="login-register-btn mr-50" >
+                                        <a href="#"><span
+									sec:authentication="name"></span></a>
+								<div sec:authorize="isAuthenticated()">
+									<form id="frmLogout" th:action="@{/logout}" method="post">
+										<a href="#"
+											onclick="document.getElementById('frmLogout').submit();">Salir</a>
+										<input type="hidden" th:name="${_csrf.parameterName}"
+											th:value="${_csrf.token}" />
+									</form>
+								</div>
+                                    </div>
+
+                                    
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ##### Header Area End ##### -->
     <!-- ##### Miscellaneous Area Start ##### -->
     
 
@@ -222,6 +290,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
     <script th:src="@{/js/plugins/plugins.js}"></script>
     <!-- Active js -->
     <script th:src="@{/js/active.js}"></script>
+    
     </div>
 </body>
 </html>

@@ -62,7 +62,7 @@ public class ArtistaController {
 		}
 	}
 	@PostMapping(value="/buscar")
-	public String buscar (@RequestParam(value="nombre",defaultValue = "Widinson")String nombre, Model model, RedirectAttributes flash) {
+	public String buscar (@RequestParam(value="nombre",defaultValue = "")String nombre, Model model, RedirectAttributes flash) {
 		List<Artista> artistas = srvArtista.findNombre(nombre);
 		
 		model.addAttribute("artistas",artistas);
