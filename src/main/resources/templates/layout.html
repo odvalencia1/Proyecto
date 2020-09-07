@@ -18,6 +18,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+
 </head>
 <body>
 <!-- Preloader -->
@@ -59,7 +60,12 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a  th:href="@{/}">Inicio</a></li>
-                                    <li><a th:href="@{/artista/list}">Artistas</a></li>
+                                    <li><a th:href="@{/artista/list}">Artistas</a>
+                                    <ul class="dropdown">
+                                            <li><a th:href="@{/evento/list}">Evento</a></li>
+                                            <li><a th:href="@{/artista/list}">Listado</a></li>
+                                            </ul>
+                                    </li>
                                         <li><a th:href="@{/contact}">Contactos</a></li>
                                 </ul>
 
@@ -290,7 +296,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
     <script th:src="@{/js/plugins/plugins.js}"></script>
     <!-- Active js -->
     <script th:src="@{/js/active.js}"></script>
-    
+    <script th:src="@{/js/layout-util.js}"></script>
     </div>
 </body>
 </html>

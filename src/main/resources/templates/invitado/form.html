@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<div class="row d-flex align-items-center">
+		<div class="col-1">
+			<i class="fas fa-layer-group"></i>
+		</div>
+		<div class="col-11">
+			<input type="text" id="txtNombre" onchange="searchByNombre();"  class="form-control"
+				placeholder="Buscar artista por nombre" />
+		</div>
+	</div>
+	<hr>
+
+	<form id="frmInvitado" 
+	class="contact-form-area ml-3 mr-3" 
+	th:object="${invitado}" th:action="@{/evento/add}" method="post">		
+		<div class="row d-flex align-items-center">
+			<div class="col-1">
+				<i class="fa fa-music"></i>
+			</div>
+			<div class="col-2">
+				<small>Artista</small>
+			</div>
+			<div class="col-9">
+				<select th:field="*{artistaid}" class="form-control invisible">
+				</select>
+			</div>
+		</div>
+		<div class="row d-flex align-items-center">
+			<div class="col-1">
+				<i class="fab fa-typo3"></i>
+			</div>
+			<div class="col-2">
+				<small>Pago:</small>
+			</div>
+			<div class="col-9">
+				<select th:field="*{tipo_pago}" class="form-control">
+					<option value="E">Efectivo</option>
+					<option value="D">Cheque</option>
+					<option value="P">Dep&oacute;sito</option>
+				</select>
+			</div>
+		</div>		
+			
+	</form>
+
+</body>
+</html>

@@ -146,13 +146,11 @@ public class Artista implements Serializable  {
 		this.linkTwitter = linkTwitter;
 	}
 	
-	
+	@JsonIgnore
 	@JoinColumn(name="fk_genero",referencedColumnName="pk_genero")
 	@ManyToOne
 	private Genero genero;
-	
-	
-	
+		
 	public Genero getGenero() {
 		return genero;
 	}
@@ -161,21 +159,11 @@ public class Artista implements Serializable  {
 		this.genero = genero;
 	}
 
-	@JsonIgnore
-	@OneToMany(mappedBy= "artista",fetch=FetchType.LAZY)
-	private List<Evento> eventos;
 	
-	
-	public List<Evento> getEventos() {
-		return eventos;
-	}
-
-	public void setEventos(List<Evento> eventos) {
-		this.eventos = eventos;
-	}
 	@JsonIgnore
 	@OneToMany(mappedBy="artista", fetch=FetchType.LAZY) 
 	private List<Integrante> integrantes;
+	
 	public List<Integrante> getIntegrantes() {
 		return integrantes;
 	}
@@ -184,5 +172,15 @@ public class Artista implements Serializable  {
 		this.integrantes = integrantes;
 	}	
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="artistaInvitado", fetch=FetchType.LAZY) 
+	private List<Invitado> invitados;
+	public List<Invitado> getInvitados() {
+		return invitados;
+	}
+
+	public void setInvitados(List<Invitado> invitados) {
+		this.invitados = invitados;
+	}
 	
 }

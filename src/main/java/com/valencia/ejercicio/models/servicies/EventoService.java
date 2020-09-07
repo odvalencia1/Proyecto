@@ -7,17 +7,32 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.valencia.ejercicio.models.dao.IEvento;
+import com.valencia.ejercicio.models.dao.IInvitado;
 import com.valencia.ejercicio.models.entities.Evento;
+import com.valencia.ejercicio.models.entities.Invitado;
 
 @Service
 public class EventoService implements IEventoService {
 	@Autowired//Inyeccion de dependencia
 	private IEvento dao;
 	
+	@Autowired
+	private IInvitado daoInvitado;
+	
 	@Override
 	@Transactional
 	public void save(Evento a) {
-		dao.save(a);
+		try {
+			dao.save(a);
+			for(Invitado i : a.getInvitados()) {
+				i.setEvento(a);
+				this.daoInvitado.save(i);			
+			}
+		}
+		catch(Exception ex) {
+				throw ex;
+		}
+		
 		
 	}
 

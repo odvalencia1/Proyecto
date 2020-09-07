@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout :: frgHead">
+</head>
+<body>
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<header th:replace="layout :: frgHeader"></header>
+	<section class="breadcumb-area bg-img bg-overlay"
+		th:style="'background-image: url('+ @{/img/bg-img/breadcumb2.jpg}+');'">
+		<div class="bradcumbContent">
+			<h2>Eventos</h2>
+		</div>
+	</section>
+	<section class="contact-area mt-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="contact-content">
+						<div class="row">
+							<div class="col-12">
+
+								<div class="contact-form-area wow fadeInUp"
+									data-wow-delay="500ms">
+									<table class="table table-hover">
+										<thead class="bg-light">
+											<tr>
+												<th><i class="fa fa-music"></i> Nombre</th>
+												<th><i class="fa fa-location-arrow"></i> Lugar</th>
+												<th><i class="fa fa-calendar"></i> Fecha</th>
+												<th><a class="btn btn-sm academy-btn btn-3" th:href="@{/evento/create}"><i class="fa fa-plus-circle"></i>&nbsp;Nuevo</a></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="e : ${eventos}">
+												<td th:text="${e.nombre}"></td>
+												<td th:text="${e.lugar}"></td>
+												<td th:text="${e.fechaEve()}"></td>
+												<td>									
+									<a class="btn btn-xs academy-btn btn-3" th:href="@{/evento/retrieve/} + ${e.idEvento}"><i class="fa fa-eye"></i></a>
+									<a class="btn btn-xs academy-btn btn-2" th:href="@{/evento/update/} + ${e.idEvento}"><i class="fa fa-edit"></i></a>
+									<button th:onclick="|alertDeleteEvento(${e.idEvento});|" class="btn btn-xs academy-btn btn-3"><i class="fa fa-trash"></i></button>
+								</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<!-- ##### Login Area End ##### -->
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+	<script th:src="@{/js/evento/delete-evento.js}"></script>
+</body>
+</html>
