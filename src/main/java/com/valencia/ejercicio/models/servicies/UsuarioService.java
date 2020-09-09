@@ -39,6 +39,7 @@ public class UsuarioService implements UserDetailsService {
 			throw new UsernameNotFoundException("Usuario " + username + " no tiene roles asignados");
 		}			
 		return new User(usuario.getNombre(), usuario.getPassword(), usuario.getHabilitado(), true, true, true, roles);		
+
 	}
 	
 	@Transactional
@@ -49,6 +50,12 @@ public class UsuarioService implements UserDetailsService {
 	@Transactional	
 	public List<Usuario> findAll(){		
 		return (List<Usuario>) dao.findAll();
+	}
+	
+	@Transactional
+	public Usuario findUserByName(String username) {
+		
+		return dao.findByNombre(username);
 	}
 
 }

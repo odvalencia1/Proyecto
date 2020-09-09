@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout :: frgHead">
+</head>
+<body>
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+
+		</div>
+	</div>
+	<header th:replace="layout :: frgHeader"></header>
+	<section class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(/img/bg-img/breadcumb3.jpg);">
+		<div class="bradcumbContent">
+			<h2>G&Eacute;NEROS MUSICALES</h2>
+		</div>
+	</section>
+	<section class="contact-area mt-100">
+
+
+		<div class="container">
+			<div class="row">
+
+				<!-- Formulario -->
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<form id="frmParticipante" class="contact-form-area ml-3 mr-3"
+								th:object="${genero}" th:action="@{/genero/save}"
+								method="post" enctype="multipart/form-data">
+
+								<div class="row">
+									<h4>Agregar nuevo g&eacute;nero musical</h4>
+								</div>
+
+
+								<table class="table table-bordered table-hover"
+									id="tablaIntegrantes">
+									<tr>
+										<th>Nombre del g&eacute;nero</th>
+
+									</tr>
+
+									<tr>
+										<td><input type="text" class="form-control"
+											placeholder="Nombre Instrumento" th:field="*{nombre}"
+											required></td>
+
+									</tr>
+								</table>
+								<button type="submit" class="btn oneMusic-btn mt-30">
+									<i class="fa fa-check"></i> &nbsp;Agregar
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- List -->
+
+				<div class="col">
+					<table class="table table-hover">
+						<thead class="bg-light">
+							<tr>
+								<th>
+									<h4>G&eacute;neros musicales registrados</h4>
+								</th>
+								<th>
+									<h6>Eliminar </h6>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="g : ${generos}">
+								<td th:text="${g.nombre}"></td>
+								<td>
+									<button th:onclick="'eliminar('+${g.idGenero}+')'"
+										class="btn btn-xs  btn-4 btn-secondary">
+										<i class="fa fa-trash"></i> 
+									</button>
+								</td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- Lista integrante -->
+
+
+
+		</div>
+
+	</section>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+	<!-- ##### Login Area End ##### -->
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+	<script th:src="@{/js/genero/delete-genero.js}"></script>
+</body>
+</html>

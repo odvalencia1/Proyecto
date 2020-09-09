@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.valencia.ejercicio.models.dao.IIntegrante;
+import com.valencia.ejercicio.models.entities.Artista;
 import com.valencia.ejercicio.models.entities.Integrante;
 @Service
 public class IntegranteService implements IIntegranteService{
@@ -39,5 +40,13 @@ public class IntegranteService implements IIntegranteService{
 	public List<Integrante> findAll() {
 		// TODO Auto-generated method stub
 		return (List<Integrante> )dao.findAll();
+	}
+
+	@Override
+	@Transactional
+	public List<Integrante> findAllByArtista(Artista artist) {
+		Integer idArtista = artist.getIdArtista();
+		//return (List<Integrante>)dao.findAllById(idArtista).get();
+		return null;
 	}
 }

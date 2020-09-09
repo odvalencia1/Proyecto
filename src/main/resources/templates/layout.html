@@ -3,294 +3,322 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="frgHead">
 <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Title -->
-    <title>Plataforma Artistas </title>
+<!-- Title -->
+<title>Plataforma Artistas</title>
 
-    <!-- Favicon -->
-    <link rel="icon" th:href="@{/img/core-img/favicon.ico}">
+<!-- Favicon -->
+<link rel="icon" th:href="@{/img/core-img/favicon.ico}">
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/integrantes-style.css}">
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
 </head>
 <body>
-<!-- Preloader -->
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+	<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
 
-    <!-- ##### Header Area Start ##### -->
-    <header class="header-area" th:fragment="frgHeader" sec:authorize="!isAuthenticated()">
-        <!-- Navbar Area -->
-        <div class="oneMusic-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+	<!-- ##### Header Area Start ##### -->
+	<header class="header-area" th:fragment="frgHeader"
+		sec:authorize="!isAuthenticated()">
+		<!-- Navbar Area -->
+		<div class="oneMusic-main-menu">
+			<div class="classy-nav-container breakpoint-off">
+				<div class="container">
+					<!-- Menu -->
+					<nav class="classy-navbar justify-content-between" id="oneMusicNav">
 
-                        <!-- Nav brand -->
-                        <a th:href="@{/}" class="nav-brand"><img th:src="@{/img/core-img/logo.png}" alt=""></a>
+						<!-- Nav brand -->
+						<a th:href="@{/}" class="nav-brand"><img
+							th:src="@{/img/core-img/music_land_logo.png}" alt=""></a>
 
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
+						<!-- Navbar Toggler -->
+						<div class="classy-navbar-toggler">
+							<span class="navbarToggler"><span></span><span></span><span></span></span>
+						</div>
 
-                        <!-- Menu -->
-                        <div class="classy-menu">
+						<!-- Menu -->
+						<div class="classy-menu">
 
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a  th:href="@{/}">Inicio</a></li>
-                                    <li><a th:href="@{/artista/list}">Artistas</a></li>
-                                        <li><a th:href="@{/contact}">Contactos</a></li>
-                                </ul>
-
-                                <!-- Login/Register & Cart Button -->
-                                <div class="login-register-cart-button d-flex align-items-center">
-                                    <!-- Login/Register -->
-                                    <div class="login-register-btn mr-50" >
-                                        <a th:href="@{/login}" id="loginBtn">Iniciar sesión / Registrarse</a>
-                                    </div>
-
-                                    
-                                </div>
-                            </div>
-                            <!-- Nav End -->
-
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- ##### Header Area End ##### -->
-	<header class="header-area" th:fragment="frgHeader" sec:authorize="hasRole('ROLE_USER')">
-        <!-- Navbar Area -->
-        <div class="oneMusic-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
-
-                        <!-- Nav brand -->
-                        <a th:href="@{/}" class="nav-brand"><img th:src="@{/img/core-img/logo.png}" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a  th:href="@{/}">Inicio</a></li>
-                                    <li><a href="#">Administrar</a>
-                                        <ul class="dropdown">
-                                            <li><a th:href="@{/evento/list}">Eventos</a></li>
-                                            <li><a th:href="@{/integrante/add}">Integrantes</a></li>
-                                            </ul>
-                                    </li>
-                                        <li><a th:href="@{/contact}">Contactos</a></li>
-                                </ul>
-
-                                <!-- Login/Register & Cart Button -->
-                                <div class="login-register-cart-button d-flex align-items-center">
-                                    <!-- Login/Register -->
-                                    <div class="login-register-btn mr-50" >
-                                        <a href="#"><span
-									sec:authentication="name"></span></a>
-								<div sec:authorize="isAuthenticated()">
-									<form id="frmLogout" th:action="@{/logout}" method="post">
-										<a href="#"
-											onclick="document.getElementById('frmLogout').submit();">Salir</a>
-										<input type="hidden" th:name="${_csrf.parameterName}"
-											th:value="${_csrf.token}" />
-									</form>
+							<!-- Close Button -->
+							<div class="classycloseIcon">
+								<div class="cross-wrap">
+									<span class="top"></span><span class="bottom"></span>
 								</div>
-                                    </div>
+							</div>
 
-                                    
-                                </div>
-                            </div>
-                            <!-- Nav End -->
+							<!-- Nav Start -->
+							<div class="classynav">
+								<ul>
+									<li><a th:href="@{/}">Inicio</a></li>
+									<li><a th:href="@{/artista/list}">Artistas</a></li>
+									<li><a th:href="@{/contact}">Contactos</a></li>
+								</ul>
 
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-    <!-- ##### Header Area End ##### -->
-    
-<header class="header-area" th:fragment="frgHeader" sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <!-- Navbar Area -->
-        <div class="oneMusic-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+								<!-- Login/Register & Cart Button -->
+								<div
+									class="login-register-cart-button d-flex align-items-center">
+									<!-- Login/Register -->
+									<div class="login-register-btn mr-50">
+										<a th:href="@{/login}" id="loginBtn">Iniciar sesión /
+											Registrarse</a>
+									</div>
 
-                        <!-- Nav brand -->
-                        <a th:href="@{/}" class="nav-brand"><img th:src="@{/img/core-img/logo.png}" alt=""></a>
 
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a  th:href="@{/}">Inicio</a></li>
-                                    <li><a href="#">Administrar</a>
-                                        <ul class="dropdown">
-                                            <li><a th:href="@{/genero/list}">Géneros</a></li>
-                                            <li><a th:href="@{/instrumento/list}">Instrumentos</a></li>
-                                            </ul>
-                                    </li>
-                                        <li><a th:href="@{/contact}">Contactos</a></li>
-                                </ul>
-
-                                <!-- Login/Register & Cart Button -->
-                                <div class="login-register-cart-button d-flex align-items-center">
-                                    <!-- Login/Register -->
-                                    <div class="login-register-btn mr-50" >
-                                        <a href="#"><span
-									sec:authentication="name"></span></a>
-								<div sec:authorize="isAuthenticated()">
-									<form id="frmLogout" th:action="@{/logout}" method="post">
-										<a href="#"
-											onclick="document.getElementById('frmLogout').submit();">Salir</a>
-										<input type="hidden" th:name="${_csrf.parameterName}"
-											th:value="${_csrf.token}" />
-									</form>
 								</div>
-                                    </div>
+							</div>
+							<!-- Nav End -->
 
-                                    
-                                </div>
-                            </div>
-                            <!-- Nav End -->
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- ##### Header Area End ##### -->
+	<header class="header-area" th:fragment="frgHeader"
+		sec:authorize="hasRole('ROLE_USER')">
+		<!-- Navbar Area -->
+		<div class="oneMusic-main-menu">
+			<div class="classy-nav-container breakpoint-off">
+				<div class="container">
+					<!-- Menu -->
+					<nav class="classy-navbar justify-content-between" id="oneMusicNav">
 
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-    <!-- ##### Header Area End ##### -->
-    <!-- ##### Miscellaneous Area Start ##### -->
-    
+						<!-- Nav brand -->
+						<a th:href="@{/}" class="nav-brand"><img
+							th:src="@{/img/core-img/logo.png}" alt=""></a>
 
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area" th:fragment="frgFooter">
-        <div class="container">
-            <div class="row d-flex flex-wrap align-items-center">
-                <div class="col-12 col-md-6">
-                    <a href="#"><img src="img/core-img/logo.png" alt=""></a>
-                    <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Elaborado por David Calapaqui y Odalis Valencia
-</p>
-                </div>
+						<!-- Navbar Toggler -->
+						<div class="classy-navbar-toggler">
+							<span class="navbarToggler"><span></span><span></span><span></span></span>
+						</div>
 
-                <div class="col-12 col-md-6">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
-                            <li><a href="#"><i class="fa fa-github fa-2x"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
+						<!-- Menu -->
+						<div class="classy-menu">
+
+							<!-- Close Button -->
+							<div class="classycloseIcon">
+								<div class="cross-wrap">
+									<span class="top"></span><span class="bottom"></span>
+								</div>
+							</div>
+
+							<!-- Nav Start -->
+							<div class="classynav">
+								<ul>
+									<li><a th:href="@{/}">Inicio</a></li>
+									<li><a href="#">Administrar</a>
+										<ul class="dropdown">
+											<li><a th:href="@{/evento/list}">Eventos</a></li>
+											<li><a th:href="@{/integrante/add}">Integrantes</a></li>
+										</ul></li>
+									<li><a th:href="@{/contact}">Contactos</a></li>
+								</ul>
+
+								<!-- Login/Register & Cart Button -->
+								<div
+									class="login-register-cart-button d-flex align-items-center">
+									<!-- Login/Register -->
+									<div class="login-register-btn mr-50">
+										<a href="#"><span sec:authentication="name"></span></a>
+										<div sec:authorize="isAuthenticated()">
+											<form id="frmLogout" th:action="@{/logout}" method="post">
+												<a href="#"
+													onclick="document.getElementById('frmLogout').submit();">Salir</a>
+												<input type="hidden" th:name="${_csrf.parameterName}"
+													th:value="${_csrf.token}" />
+											</form>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+							<!-- Nav End -->
+
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- ##### Header Area End ##### -->
+
+	<header class="header-area" th:fragment="frgHeader"
+		sec:authorize="hasAuthority('ROLE_ADMIN')">
+		<!-- Navbar Area -->
+		<div class="oneMusic-main-menu">
+			<div class="classy-nav-container breakpoint-off">
+				<div class="container">
+					<!-- Menu -->
+					<nav class="classy-navbar justify-content-between" id="oneMusicNav">
+
+						<!-- Nav brand -->
+						<a th:href="@{/}" class="nav-brand"><img
+							th:src="@{/img/core-img/music_land_logo.png}" alt=""></a>
+
+						<!-- Navbar Toggler -->
+						<div class="classy-navbar-toggler">
+							<span class="navbarToggler"><span></span><span></span><span></span></span>
+						</div>
+
+						<!-- Menu -->
+						<div class="classy-menu">
+
+							<!-- Close Button -->
+							<div class="classycloseIcon">
+								<div class="cross-wrap">
+									<span class="top"></span><span class="bottom"></span>
+								</div>
+							</div>
+
+							<!-- Nav Start -->
+							<div class="classynav">
+								<ul>
+									<li><a th:href="@{/}">Inicio</a></li>
+									<li><a href="#">Administrar</a>
+										<ul class="dropdown">
+											<li><a th:href="@{/genero/create}">Géneros</a></li>
+											<li><a th:href="@{/instrumento/create}">Instrumentos</a></li>
+										</ul></li>
+
+									<li><a href="#">Reportes</a>
+										<ul class="dropdown">
+											<li><a th:href="@{/evento/rptEventosArtistas}">Eventos por Artista</a></li>
+
+											</ul></li>
+
+									<li><a th:href="@{/contact}">Contactos</a></li>
+								</ul>
+
+								<!-- Login/Register & Cart Button -->
+								<div
+									class="login-register-cart-button d-flex align-items-center">
+									<!-- Login/Register -->
+									<div class="login-register-btn mr-50">
+										<a href="#"><span sec:authentication="name"></span></a>
+										<div sec:authorize="isAuthenticated()">
+											<form id="frmLogout" th:action="@{/logout}" method="post">
+												<a href="#"
+													onclick="document.getElementById('frmLogout').submit();">Salir</a>
+												<input type="hidden" th:name="${_csrf.parameterName}"
+													th:value="${_csrf.token}" />
+											</form>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+							<!-- Nav End -->
+
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- ##### Header Area End ##### -->
+	<!-- ##### Miscellaneous Area Start ##### -->
+
+
+	<!-- ##### Footer Area Start ##### -->
+	<footer class="footer-area" th:fragment="frgFooter">
+		<div class="container">
+			<div class="row d-flex flex-wrap align-items-center">
+				<div class="col-12 col-md-6">
+					<a href="#"><img src="img/core-img/logo.png" alt=""></a>
+					<p class="copywrite-text">
+						<a href="#">
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;<script>
+								document.write(new Date().getFullYear());
+							</script>
+							Todos los derechos reservados | Elaborado por David Calapaqui y
+							Odalis Valencia 
+					</p>
+				</div>
+
+				<div class="col-12 col-md-6">
+					<div class="footer-nav">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+							<li><a href="#"><i class="fa fa-github fa-2x"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-12">
 				<div id="success-alert" th:if="${success != null}">
 					<script th:inline="javascript">
 						/*<![CDATA[*/
-							var message = /*[[${success}]]*/
-							Swal.fire({
-									title : '¡Correcto!', 
-									text: message,
-									icon : 'success',
-									button : 'Aceptar'
-									})
+						var message = /*[[${success}]]*/
+						Swal.fire({
+							title : '¡Correcto!',
+							text : message,
+							icon : 'success',
+							button : 'Aceptar'
+						})
 						/*]]>*/
 					</script>
 				</div>
 				<div id="error-alert" th:if="${error != null}">
 					<script th:inline="javascript">
 						/*<![CDATA[*/
-							var message = /*[[${error}]]*/
-							Swal.fire({
-									title : '¡Error!', 
-									text: message,
-									icon : 'error',
-									button : 'Aceptar'
-									})
+						var message = /*[[${error}]]*/
+						Swal.fire({
+							title : '¡Error!',
+							text : message,
+							icon : 'error',
+							button : 'Aceptar'
+						})
 						/*]]>*/
 					</script>
 				</div>
-				
-								
+
+
 			</div>
 		</div>
-        
-        
-    </footer>
-    <!-- ##### Footer Area Start ##### -->
 
-    <!-- ##### All Javascript Script ##### -->
-    <div th:fragment="frgScripts">
-    <!-- jQuery-2.2.4 js -->
-    <script th:src="@{/js/jquery/jquery-2.2.4.min.js}"></script>
-    <!-- Popper js -->
-    <script th:src="@{/js/bootstrap/popper.min.js}"></script>
-    <!-- Bootstrap js -->
-    <script th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
-    <!-- All Plugins js -->
-    <script th:src="@{/js/plugins/plugins.js}"></script>
-    <!-- Active js -->
-    <script th:src="@{/js/active.js}"></script>
-    
-    </div>
+
+	</footer>
+	<!-- ##### Footer Area Start ##### -->
+
+	<!-- ##### All Javascript Script ##### -->
+	<div th:fragment="frgScripts">
+		<!-- jQuery-2.2.4 js -->
+		<script th:src="@{/js/jquery/jquery-2.2.4.min.js}"></script>
+		<!-- Popper js -->
+		<script th:src="@{/js/bootstrap/popper.min.js}"></script>
+		<!-- Bootstrap js -->
+		<script th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+		<!-- All Plugins js -->
+		<script th:src="@{/js/plugins/plugins.js}"></script>
+		<!-- Active js -->
+		<script th:src="@{/js/active.js}"></script>
+
+	</div>
 </body>
 </html>

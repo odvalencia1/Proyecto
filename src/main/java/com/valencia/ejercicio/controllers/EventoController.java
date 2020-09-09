@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.valencia.ejercicio.models.entities.Artista;
@@ -20,6 +20,7 @@ import com.valencia.ejercicio.models.servicies.IArtistaService;
 import com.valencia.ejercicio.models.servicies.IClienteService;
 import com.valencia.ejercicio.models.servicies.IEventoService;
 import com.valencia.ejercicio.models.servicies.ITipoEstadoService;
+import com.valencia.ejercicio.reporting.RptEventoArtista;
 
 
 @Controller
@@ -103,4 +104,21 @@ public class EventoController {
 		this.srvEvento.save(evento);
 		return "redirect:/evento/list";
 	}
+	
+	@GetMapping(value = "/rptEventosArtistas")
+	public String rptEventosArtista(Model model) {
+		return "evento/rptEventosArtistas";
+	}
+	
+	@GetMapping(value="/dataRptEventosArtistas", produces="application/json")
+	public @ResponseBody List<RptEventoArtista> dataRptEventosArtista(Model model){
+		try {
+			return this.srvEvento.rptEventoArtista();
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		}
+	}
+	
+	
 }

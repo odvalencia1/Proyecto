@@ -160,6 +160,11 @@ public class Artista implements Serializable  {
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
+	
+	public void setIntegrantes(List<Integrante> integrantes) {
+		this.integrantes = integrantes;
+	}	
+	
 
 	@JsonIgnore
 	@OneToMany(mappedBy= "artista",fetch=FetchType.LAZY)
@@ -173,16 +178,15 @@ public class Artista implements Serializable  {
 	public void setEventos(List<Evento> eventos) {
 		this.eventos = eventos;
 	}
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="artista", fetch=FetchType.LAZY) 
 	private List<Integrante> integrantes;
+	
 	public List<Integrante> getIntegrantes() {
 		return integrantes;
 	}
 
-	public void setIntegrantes(List<Integrante> integrantes) {
-		this.integrantes = integrantes;
-	}	
 	
 	
 }

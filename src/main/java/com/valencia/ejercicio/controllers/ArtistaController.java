@@ -73,6 +73,8 @@ public class ArtistaController {
 	@GetMapping(value="/ver/{id}")
 	public String ver (@PathVariable(value="id")Integer id, Model model, RedirectAttributes flash) {
 		Artista artista = srvArtista.findById(id);
+		
+		
 		if(artista == null) {
 			flash.addFlashAttribute("error","El  cliente no existe en la base de datos");
 			return "redirect: artista/list";

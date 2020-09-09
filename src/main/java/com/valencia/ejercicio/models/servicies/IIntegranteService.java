@@ -2,6 +2,7 @@ package com.valencia.ejercicio.models.servicies;
 
 import java.util.List;
 
+import com.valencia.ejercicio.models.entities.Artista;
 import com.valencia.ejercicio.models.entities.Integrante;
 
 public interface IIntegranteService {
@@ -9,4 +10,5 @@ public interface IIntegranteService {
 	public Integrante findById(Integer id);
 	public void delete(Integer id);
 	public List<Integrante> findAll();
+	public List<Integrante> findAllByArtista(Artista artist);
 }
