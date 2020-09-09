@@ -39,6 +39,10 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/usuario/**").permitAll()
 			.antMatchers("/artista/**").permitAll()
 			.antMatchers("/evento/**").permitAll()
+<<<<<<< HEAD
+=======
+			.antMatchers("/invitado/**").permitAll()
+>>>>>>> ccc5c3c5911bb6ea9230c1c7d010659173c9bc99
 			.anyRequest().authenticated()
 			.and().formLogin().successHandler(handler).loginPage("/login").permitAll()			
 			.and().logout().permitAll()			

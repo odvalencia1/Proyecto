@@ -10,4 +10,5 @@ public interface IArtistaService {
 	public void delete(Integer id);
 	public List<Artista> findAll();
 	public List<Artista> findNombre(String nombre);
+	public List<Artista> findByNombre(String nombreArtistico);
 }

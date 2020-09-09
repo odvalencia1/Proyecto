@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout :: frgHead">
+</head>
+<body>
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<header th:replace="layout :: frgHeader"></header>
+
+	<section class="breadcumb-area bg-img bg-overlay"
+		th:style="'background-image: url('+ @{/img/bg-img/breadcumb2.jpg}+');'">
+		<div class="bradcumbContent">
+			<p th:text="${title}"></p>
+			<h2>Eventos</h2>
+		</div>
+	</section>
+	<!-- ##### Breadcumb Area End ##### -->
+
+	<!-- ##### Login Area Start ##### -->
+	<section class="contact-area mt-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="contact-content">
+						<form th:action="@{/evento/save}" enctype="multipart/form-data"
+							th:object="${Evento}" method="post">
+							<div class="form-group ">
+								<div class="row d-flex align-items-center">
+									<div class="col-1">
+										<i class="fa fa-music fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="text" class="form-control"
+											placeholder="Nombre del Evento" th:field="*{nombre}">
+										<small class="invalid-feedback"
+											th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+									</div>
+
+									<div class="col-1">
+										<i class="fa fa-location-arrow fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="text" class="form-control" placeholder="Lugar"
+											th:field="*{lugar}"> <small class="invalid-feedback"
+											th:if="${#fields.hasErrors('lugar')}" th:errors="*{lugar}"></small>
+									</div>
+
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="row d-flex align-items-center">
+									<div class="col-1">
+										<i class="fa fa-calendar fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="date" class="form-control" th:field="*{fecha}">
+										<small class="invalid-feedback"
+											th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
+									</div>
+									<div class="col-1">
+										<i class="fa fa-user fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<select class="form-control" th:field="*{cliente.idPersona}">
+											<option value=0>- Seleccione -</option>
+											<option th:each="ar: ${clientes}" th:value="${ar.idPersona}"
+												th:text="${ar.toString()}"></option>
+										</select> <small class="invalid-feedback"
+											th:if="${#fields.hasErrors('cliente')}"
+											th:errors="*{cliente}"></small>
+									</div>
+
+
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="row d-flex align-items-center">
+									<div class="col-1">
+										<label for="exampleInputEmail1"> Hora Inicio</label>
+									</div>
+									<div class="col-5">
+										<input type="time" class="form-control"
+											th:field="*{horaInicio}">
+
+
+									</div>
+
+									<div class="col-1">
+										<label for="exampleInputEmail1"> Hora Fin</label>
+									</div>
+									<div class="col-5">
+										<input type="time" class="form-control" th:field="*{horaFin}">
+
+									</div>
+
+
+								</div>
+							</div>
+							<div class="d-flex justify-content-center">
+
+								<button type="submit" class="btn oneMusic-btn mt-30">
+									<i class="fa fa-check"></i> &nbsp;Guardar
+								</button>
+								&nbsp; &nbsp;
+								<button class="btn oneMusic-btn mt-30"
+									th:href="@{/reserva/list}">
+									<i class="fa fa-times"></i> &nbsp;Cancelar
+								</button>
+							</div>
+							<input type="hidden" th:field="*{idEvento}" />
+						</form>
+						<br> <br>
+						<div class="row">
+							<div class="col-10">
+								<h4>Artistas Invitados</h4>
+							</div>
+							<div class="col-2">
+								<button class="btn btn-xs academy-btn btn-3" id="btnAdd"
+									data-toggle="modal" data-target="#modalInvitado">
+									<i class="fa fa-plus"></i>&nbsp;Nuevo
+								</button>
+							</div>
+						</div>
+						<div id="listInvitados"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div class="modal fade" id="modalInvitado" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Agregar artista</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body contact-area contact-content-modal"
+					id="contentFrmInvitado"></div>
+				<div class="modal-footer">
+					<button id="btnSubmit" type="button"
+						class="btn btn-sm academy-btn btn-3" data-dismiss="modal">Guardar</button>
+					<button type="button" class="btn btn-sm academy-btn btn-2"
+						data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ##### Login Area End ##### -->
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+	<script th:src="@{/js/evento/add-invitado.js}"></script>
+</body>
+</html>

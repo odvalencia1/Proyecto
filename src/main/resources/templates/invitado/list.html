@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<table class="table table-hover">
+		<thead class="bg-light">
+			<tr>
+				<th><i class="fa fa-font"></i>&nbsp;Nombre Art&iacute;stico</th>
+				<th><i class="fa fa-music"></i>&nbsp;G&eacute;nero</th>
+				<th><i class="fa fa-usd"></i>&nbsp;Tipo de pago</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="a : ${artis}">
+				<td th:text="${a.artistaInvitado.nombreArtistico}"></td>
+				<td th:text="${a.artistaInvitado.genero.nombre}"></td>
+				<td th:text="${a.tipo_pago}"></td>
+				<td>
+					<button th:onclick="|onDelete(${a.idInvitado});|"
+						class="btn btn-xs academy-btn btn-4">
+						<i class="fa fa-trash"></i>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+</body>
+
+</html>

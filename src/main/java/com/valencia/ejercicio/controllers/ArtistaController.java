@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -63,7 +64,7 @@ public class ArtistaController {
 	}
 	@PostMapping(value="/buscar")
 	public String buscar (@RequestParam(value="nombre",defaultValue = "")String nombre, Model model, RedirectAttributes flash) {
-		List<Artista> artistas = srvArtista.findNombre(nombre);
+		List<Artista> artistas = srvArtista.findByNombre(nombre);
 		
 		model.addAttribute("artistas",artistas);
 		List<Genero> generos = srvGenero.findAll();
@@ -138,4 +139,13 @@ public class ArtistaController {
 		this.srvArtista.save(artista);
 		return "redirect:/artista/list";
 	}
+	@GetMapping(value="/search/{criteria}", produces="application/json")
+	public @ResponseBody List<Artista> searches(@PathVariable(value="criteria") String criteria, Model model) {
+		List<Artista> lista = srvArtista.findByNombre(criteria);
+		System.out.println(lista);
+		return lista;		
+	}
+	
+	
+	
 }
