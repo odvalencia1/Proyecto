@@ -19,8 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+<<<<<<< HEAD
+=======
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+>>>>>>> ccc5c3c5911bb6ea9230c1c7d010659173c9bc99
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.valencia.ejercicio.models.entities.Invitado;
@@ -31,8 +34,16 @@ import com.valencia.ejercicio.models.entities.Evento;
 import com.valencia.ejercicio.models.servicies.IArtistaService;
 import com.valencia.ejercicio.models.servicies.IClienteService;
 import com.valencia.ejercicio.models.servicies.IEventoService;
+<<<<<<< HEAD
 import com.valencia.ejercicio.models.servicies.InvitadoService;
 import com.valencia.ejercicio.models.servicies.UsuarioService;
+=======
+<<<<<<< HEAD
+import com.valencia.ejercicio.models.servicies.ITipoEstadoService;
+import com.valencia.ejercicio.reporting.RptEventoArtista;
+=======
+>>>>>>> ccc5c3c5911bb6ea9230c1c7d010659173c9bc99
+>>>>>>> 455a54f575d8baef4d91c7012d504404b3946723
 
 
 @Controller
@@ -208,6 +219,24 @@ public class EventoController {
 		return "redirect:/";
 	}
 	
+<<<<<<< HEAD
+	@GetMapping(value = "/rptEventosArtistas")
+	public String rptEventosArtista(Model model) {
+		return "evento/rptEventosArtistas";
+	}
+	
+	@GetMapping(value="/dataRptEventosArtistas", produces="application/json")
+	public @ResponseBody List<RptEventoArtista> dataRptEventosArtista(Model model){
+		try {
+			return this.srvEvento.rptEventoArtista();
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		}
+	}
+	
+	
+=======
 	@PostMapping(value = "/add", produces="application/json")
 	public @ResponseBody Object add(@RequestBody @Valid Invitado invitado, 
 			BindingResult result, Model model, HttpSession session) {				
@@ -229,4 +258,5 @@ public class EventoController {
 		model.addAttribute("title", "Listado de Artistas Invitados");
 		return "invitado/list";
 	}
+>>>>>>> ccc5c3c5911bb6ea9230c1c7d010659173c9bc99
 }

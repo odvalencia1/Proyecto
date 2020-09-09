@@ -6,33 +6,15 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-<div class="preloader d-flex align-items-center justify-content-center">
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-<header th:replace="layout :: frgHeader"></header>
-    <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" th:style="'background-image: url('+ @{/img/bg-img/breadcumb3.jpg}+');'">
-        <div class="bradcumbContent">
-            <p th:text="${title}"></p>
-            <h2 th:text="${artista.nombreArtistico}"></h2>
-        </div>
-    </section>
-    <!-- ##### Breadcumb Area End ##### -->
-
-    <!-- ##### Events Area Start ##### -->
-        <div class="container" th:if="*{artista.video!=null}" >
-        <br>
-        <br>
-	               <iframe width="560" height="360"
-						th:src="${artista.video}"  >
-					</iframe>
+	<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
 		</div>
+<<<<<<< HEAD
     <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed"  th:style="'background-image: url('+ @{/img/bg-img/bg-4.jpg}+');'">
         <div class="container">
                     
@@ -89,6 +71,119 @@
   <footer th:replace="layout :: frgFooter"></footer>
  <div th:replace="layout :: frgScripts"> </div>
    
+=======
+	</div>
+	<header th:replace="layout :: frgHeader"></header>
+	<!-- ##### Breadcumb Area Start ##### -->
+	<section class="breadcumb-area bg-img bg-overlay"
+		th:style="'background-image: url('+ @{/img/bg-img/breadcumb3.jpg}+');'">
+		<div class="bradcumbContent">
+			<p th:text="${title}"></p>
+			<h2 th:text="${artista.nombreArtistico}"></h2>
+		</div>
+	</section>
+	<!-- ##### Breadcumb Area End ##### -->
+
+	<!-- ##### Events Area Start ##### -->
+	<div class="container" th:if="*{artista.video!=null}">
+		<br> <br>
+		<iframe width="560" height="360" th:src="${artista.video}"> </iframe>
+	</div>
+	<section
+		class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed"
+		th:style="'background-image: url('+ @{/img/bg-img/bg-4.jpg}+');'">
+		<div class="container">
+
+
+			<!-- Single Event Area -->
+
+			<div class="row align-items-end">
+				<div class="col-12 col-md-5 col-lg-4">
+					<div class="featured-artist-thumb">
+						<img th:src="@{'/foto/'+${artista.foto}}">
+					</div>
+				</div>
+				<div class="col-12 col-md-7 col-lg-8">
+					<div class="featured-artist-content">
+						<!-- Section Heading -->
+						<div class="section-heading white text-left mb-30">
+							<p>Artista</p>
+							<h2 th:text="${artista.nombreArtistico}"></h2>
+						</div>
+						<p th:text="${artista.numeroTelefonico}"></p>
+						<p th:text="${artista.correo}"></p>
+						<p th:text="${artista.genero.nombre}"></p>
+						<p th:text="${artista.costo}"></p>
+						<p></p>
+						<div class="song-play-area">
+							<div class="song-name ">
+								<p>
+									Redes Sociales: <a th:href="${artista.linkFacebook}"><i
+										class="fa fa-facebook fa-2x"></i></a> <a
+										th:href="${artista.linkTwitter}"><i
+										class="fa fa-twitter fa-2x"></i></a> <a
+										th:href="${artista.linkTwitter}"><i
+										class="fa fa-instagram fa-2x"></i></a>
+								</p>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<br> <br> <br> <br>
+
+			<!-- INTEGRANTES -->
+			<div class="section-heading white text-left mb-30">
+				<h2 th:text="INTEGRANTES" align="center"></h2>
+			</div>
+			<div class="row align-items-end">
+				<!-- Lista  integrantes -->
+				<ul th:each="i : ${artista.getIntegrantes()}">
+					<li>
+						<div class="card song-play-area white" style="width: 18rem; margin-left:20px;">
+							<img class="card-img-top rounded-circle"
+								th:src="@{/uploads/} + ${i.foto}">
+							<div class="card-body">
+								<!-- Titulo card integrante -->
+
+								<div class="section-heading white text-left mb-30">
+									
+									<h5 th:text="${i}"></h5>
+								</div>
+								
+								<p th:text="${i.instrumento}"></p>
+							
+							</div>
+						</div>
+						
+						<div></div>
+
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+
+
+
+	</section>
+	<div class="row">
+		<div class="col-12">
+			<div class="load-more-btn text-center mt-70">
+				<a href="#" class="btn oneMusic-btn">Resevar <i
+					class="fa fa-angle-double-right"></i></a>
+			</div>
+		</div>
+	</div>
+	<!-- ##### Events Area End ##### -->
+
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+
+>>>>>>> 455a54f575d8baef4d91c7012d504404b3946723
 </body>
 
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout :: frgHead">
+
+</head>
+<body>
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+
+		</div>
+	</div>
+	<header th:replace="layout :: frgHeader"></header>
+	<section class="breadcumb-area bg-img bg-overlay"
+		th:style="'background-image: url('+ @{/img/bg-img/breadcumb3.jpg}+');'">
+		<div class="bradcumbContent">
+			<h2>REPORTE EVENTOS POR ARTISTAS</h2>
+		</div>
+	</section>
+	<section class="contact-area mt-100">
+
+
+		<div class="container">
+
+			<div id="canvas-holder" style="width: 40%">
+				<div class="chartjs-size-monitor">
+					<div class="chartjs-size-monitor-expand"></div>
+				</div>
+			</div>
+
+
+			<canvas id="chart-area"
+				style="display: block; width: 337px; height: 168px;" width="303"
+				height="151" class="chartjs-render-monitor"></canvas>
+
+		</div>
+
+	</section>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<!-- ##### Login Area End ##### -->
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+	<script th:src="@{/js/evento/rpt-eventos-artistas.js}"></script>
+	
+</body>
+</html>
