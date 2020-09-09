@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body>
+	<div id="preloader">
+		<i class="circle-preloader"></i>
+	</div>
+
+	<header th:replace="layout :: frgHeader"></header>
+
+	<section class="breadcumb-area bg-img bg-overlay"
+		th:style="'background-image: url('+ @{/img/bg-img/breadcumb2.jpg}+');'">
+		<div class="bradcumbContent">
+			<p th:text="${title}"></p>
+			<h2>Evento</h2>
+		</div>
+	</section>
+
+
+	<section class="contact-area mt-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="contact-content">
+						<div class="row">
+							<div class="col-12">
+
+								<div class="academy-tab-text">
+									<div class="contact-form-area wow fadeInUp"
+										data-wow-delay="500ms">
+										<form th:object="${evento}" method="post">
+											<div class="row d-flex align-items-center">
+												<div class="col-1">
+													<i class="fa fa-music fa-2x"></i>
+												</div>
+												<div class="col-5">
+													<input type="text" class="form-control"
+														th:field="*{nombre}" readonly />
+												</div>
+												<div class="col-1">
+													<i class="fa fa-location-arrow fa-2x"></i>
+												</div>
+												<div class="col-5">
+													<input type="text" class="form-control" th:field="*{lugar}"
+														readonly />
+												</div>
+											</div>
+											<div class="row d-flex align-items-center">
+												<div class="col-1">
+													<i class="fa fa-calendar fa-2x"></i>
+												</div>
+												<div class="col-5">
+													<input type="text" class="form-control" th:field="*{fecha}"
+														readonly />
+												</div>
+												<div class="col-1">
+													<i class="fa fa-user fa-2x"></i>
+												</div>
+												<div class="col-5">
+													<input type="text" class="form-control"
+														th:field="*{cliente}" readonly />
+												</div>
+											</div>
+											<div class="row d-flex align-items-center">
+												<div class="col-1">
+													<label for="exampleInputEmail1"> Hora Inicio</label>
+												</div>
+												<div class="col-5">
+													<input type="text" class="form-control"
+														th:field="*{horaInicio}" readonly />
+												</div>
+												<div class="col-1">
+													<label for="exampleInputEmail1"> Hora Fin</label>
+												</div>
+												<div class="col-5">
+													<input type="text" class="form-control"
+														th:field="*{horaFin}" readonly />
+												</div>
+											</div>
+											<table class="table table-hover">
+												<thead class="bg-light">
+													<tr>
+														<th><i class="fa fa-font"></i>&nbsp;Nombre
+															Art&iacute;stico</th>
+														<th><i class="fa fa-music"></i>&nbsp;G&eacute;nero</th>
+														<th><i class="fa fa-usd"></i>&nbsp;Tipo de pago</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="a : ${invitados}">
+														<td th:text="${a.artistaInvitado.nombreArtistico}"></td>
+														<td th:text="${a.artistaInvitado.genero.nombre}"></td>
+														<td th:text="${a.tipo_pago}"></td>
+														
+													</tr>
+												</tbody>
+											</table>
+											<div class="d-flex justify-content-end">
+												<a th:href="@{/evento/list}" class="btn oneMusic-btn mt-30"
+													type="reset"><i class="fa fa-reply"></i> &nbsp;Volver</a>
+											</div>
+											
+											<input type="hidden" th:field="*{idEvento}" />
+
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+
+</body>
+</html>

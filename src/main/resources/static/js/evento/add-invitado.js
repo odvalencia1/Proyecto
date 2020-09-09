@@ -78,6 +78,29 @@ function save(){
 }
 
 
+function Eliminar(artista) {
+	$.ajax({
+		url : "/evento/deleteArtista/" + artista,
+		method : 'GET',
+		success : function(response){
+			Swal.fire(
+		      'Artista invitado eliminado',
+		      'El artista invitado se ha eliminado con exito.',
+		      'success'
+		    ).then((result) => {
+		    	location.reload();
+			})		
+		},
+		error : function(err){
+			Swal.fire(
+		      'Ha ocurrido un error',
+		      'No se ha podido eliminar el artista invitado, intente nuevamente.',
+		      'warning'
+		    )
+			console.error(err);
+		}		
+	});
+}
 
 $(document).ready(function(){
 	

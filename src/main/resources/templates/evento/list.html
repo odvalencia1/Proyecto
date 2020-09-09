@@ -40,14 +40,14 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="e : ${eventos}">
-												<td th:text="${e.nombre}"></td>
-												<td th:text="${e.lugar}"></td>
-												<td th:text="${e.fechaEve()}"></td>
+											<tr th:each="e : ${invitados}">
+												<td th:text="${e.evento.nombre}"></td>
+												<td th:text="${e.evento.lugar}"></td>
+												<td th:text="${e.evento.fechaEve()}"></td>
 												<td>									
-									<a class="btn btn-xs academy-btn btn-3" th:href="@{/evento/retrieve/} + ${e.idEvento}"><i class="fa fa-eye"></i></a>
-									<a class="btn btn-xs academy-btn btn-2" th:href="@{/evento/update/} + ${e.idEvento}"><i class="fa fa-edit"></i></a>
-									<button th:onclick="|alertDeleteEvento(${e.idEvento});|" class="btn btn-xs academy-btn btn-3"><i class="fa fa-trash"></i></button>
+									<a class="btn btn-xs academy-btn btn-3" th:href="@{/evento/retrieve/} + ${e.evento.idEvento}"><i class="fa fa-eye"></i></a>
+									<a class="btn btn-xs academy-btn btn-2" th:href="@{/evento/update/} + ${e.evento.idEvento}"><i class="fa fa-edit"></i></a>
+									<button th:onclick="|alertDeleteEvento(${e.evento.idEvento});|" class="btn btn-xs academy-btn btn-3"><i class="fa fa-trash"></i></button>
 								</td>
 											</tr>
 										</tbody>

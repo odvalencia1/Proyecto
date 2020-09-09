@@ -17,7 +17,7 @@
     </div>
 <header th:replace="layout :: frgHeader"></header>
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" th:style="'background-image: url('+ @{/img/bg-img/breadcumb3.jpg}+');'">
         <div class="bradcumbContent">
             <p th:text="${title}"></p>
             <h2>Artistas</h2>

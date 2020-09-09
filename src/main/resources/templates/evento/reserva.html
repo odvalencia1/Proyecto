@@ -30,7 +30,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="contact-content">
-						<form th:action="@{/evento/save}" enctype="multipart/form-data"
+						<form th:action="@{/evento/guardar}" enctype="multipart/form-data"
 							th:object="${Evento}" method="post">
 							<div class="form-group ">
 								<div class="row d-flex align-items-center">
@@ -110,23 +110,23 @@
 									<i class="fa fa-check"></i> &nbsp;Guardar
 								</button>
 								&nbsp; &nbsp;
-								<a th:href="@{/evento/list}" class="btn oneMusic-btn mt-30">&nbsp;Cancelar <i class="fa fa-times"></i></a>
+								<a th:href="@{/}" class="btn oneMusic-btn mt-30">&nbsp;Cancelar <i class="fa fa-times"></i></a>
 							</div>
 							<input type="hidden" th:field="*{idEvento}" />
 						</form>
 						<br> <br>
-<!-- 						<div class="row"> -->
-<!-- 							<div class="col-10"> -->
-<!-- 								<h4>Artistas Invitados</h4> -->
-<!-- 							</div> -->
-<!-- 							<div class="col-2"> -->
-<!-- 								<button class="btn btn-xs academy-btn btn-3" id="btnAdd" -->
-<!-- 									data-toggle="modal" data-target="#modalInvitado"> -->
-<!-- 									<i class="fa fa-plus"></i>&nbsp;Nuevo -->
-<!-- 								</button> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div id="listInvitados"></div> -->
+						<div class="row">
+							<div class="col-10">
+								<h4>Artistas Invitados</h4>
+							</div>
+							<div class="col-2">
+								<button class="btn btn-xs academy-btn btn-3" id="btnAdd"
+									data-toggle="modal" data-target="#modalInvitado">
+									<i class="fa fa-plus"></i>&nbsp;Nuevo
+								</button>
+							</div>
+						</div>
+						<div id="listInvitados"></div>
 					</div>
 				</div>
 			</div>
@@ -137,29 +137,28 @@
 	<br>
 	<br>
 
-<!-- 	<div class="modal fade" id="modalInvitado" tabindex="-1" role="dialog" -->
-<!-- 		aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
-<!-- 		<div class="modal-dialog"> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<h5 class="modal-title">Agregar artista</h5> -->
-<!-- 					<button type="button" class="close" data-dismiss="modal" -->
-<!-- 						aria-label="Close"> -->
-<!-- 						<span aria-hidden="true">&times;</span> -->
-<!-- 					</button> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body contact-area contact-content-modal" -->
-<!-- 					id="contentFrmInvitado"></div> -->
-<!-- 				<div class="modal-footer"> -->
-<!-- 					<button id="btnSubmit" type="button" -->
-<!-- 						class="btn btn-sm academy-btn btn-3" data-dismiss="modal">Guardar</button> -->
-<!-- 					<button type="button" class="btn btn-sm academy-btn btn-2" -->
-<!-- 						data-dismiss="modal">Cancelar</button> -->
-						
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<div class="modal fade" id="modalInvitado" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Agregar artista</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body contact-area contact-content-modal"
+					id="contentFrmInvitado"></div>
+				<div class="modal-footer">
+					<button id="btnSubmit" type="button"
+						class="btn btn-sm academy-btn btn-3" data-dismiss="modal">Guardar</button>
+					<button type="button" class="btn btn-sm academy-btn btn-2"
+						data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- ##### Login Area End ##### -->
 	<footer th:replace="layout :: frgFooter"></footer>

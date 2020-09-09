@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.valencia.ejercicio.models.dao.IInvitado;
+import com.valencia.ejercicio.models.entities.Artista;
+import com.valencia.ejercicio.models.entities.Evento;
 import com.valencia.ejercicio.models.entities.Invitado;
 
 
@@ -43,7 +45,19 @@ public class InvitadoService implements IInvitadoService {
 		// TODO Auto-generated method stub
 		return (List<Invitado> )dao.findAll();
 	}
+	
+	@Override
+	@Transactional
+	public List<Invitado> findByEvento(Evento id) {
+		// TODO Auto-generated method stub
+		return (List<Invitado> ) dao.findByEvento(id);
+	}
 
+	@Override
+	public List<Invitado> findByArtistaInvitado(Artista artista) {
+		// TODO Auto-generated method stub
+		return (List<Invitado> ) dao.findByArtistaInvitado(artista);
+	}
 	
 	
 }

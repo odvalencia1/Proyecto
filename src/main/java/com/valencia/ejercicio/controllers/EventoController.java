@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,12 +24,15 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.valencia.ejercicio.models.entities.Invitado;
+import com.valencia.ejercicio.models.entities.Usuario;
 import com.valencia.ejercicio.models.entities.Artista;
 import com.valencia.ejercicio.models.entities.Cliente;
 import com.valencia.ejercicio.models.entities.Evento;
 import com.valencia.ejercicio.models.servicies.IArtistaService;
 import com.valencia.ejercicio.models.servicies.IClienteService;
 import com.valencia.ejercicio.models.servicies.IEventoService;
+import com.valencia.ejercicio.models.servicies.InvitadoService;
+import com.valencia.ejercicio.models.servicies.UsuarioService;
 
 
 @Controller
@@ -42,6 +47,10 @@ public class EventoController {
 	
 	@Autowired
 	private IArtistaService srvArtista;
+	@Autowired
+	private UsuarioService srvUsuario;
+	@Autowired
+	private InvitadoService srvInvitado;
 	
 	@GetMapping(value="/create")//https://localhost:8080/Evento/create
 	public String create(Model model) {
@@ -53,7 +62,26 @@ public class EventoController {
 		model.addAttribute("clientes",clientes);
 		return "evento/form";
 	}
-	
+	@GetMapping(value="/reservar")//https://localhost:8080/Evento/create
+	public String reservar(Model model) {
+		Evento evento = new Evento();
+		evento.setInvitados(new ArrayList<Invitado>());
+		model.addAttribute("title","Registro de nuevo Evento");
+		model.addAttribute("Evento",evento);
+		List<Cliente> clientes = srvCliente.findAll();
+		model.addAttribute("clientes",clientes);
+		return "evento/reserva";
+	}
+	public Artista BuscarArtista() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = null;
+		if (principal instanceof UserDetails) {
+		  userDetails = (UserDetails) principal;
+		}
+		String userName = userDetails.getUsername();
+		Usuario usuario = this.srvUsuario.findByNombre(userName);
+		return usuario.getArtista();
+	}
 	@GetMapping(value="/retrieve/{id}")
 	public String retrieve (@PathVariable(value="id")Integer id, Model model, RedirectAttributes flash) {
 		Evento evento = srvEvento.findById(id);
@@ -67,6 +95,8 @@ public class EventoController {
 		
 		List<Cliente> clientes = srvCliente.findAll();
 		model.addAttribute("clientes",clientes);
+		List<Invitado> invitados = srvInvitado.findByEvento(evento);
+		model.addAttribute("invitados",invitados);
 		List<Artista> artistas = srvArtista.findAll();
 		model.addAttribute("artistas",artistas);
 		return "evento/card";
@@ -76,7 +106,7 @@ public class EventoController {
 	@GetMapping(value="/update/{id}")
 	public String update (@PathVariable(value="id")Integer id, Model model,RedirectAttributes flash) {
 		Evento evento = srvEvento.findById(id);
-		model.addAttribute("evento",evento);
+		model.addAttribute("Evento",evento);
 		List<Cliente> clientes = srvCliente.findAll();
 		model.addAttribute("clientes",clientes);
 		List<Artista> artistas = srvArtista.findAll();
@@ -91,16 +121,63 @@ public class EventoController {
 		return "redirect:/evento/list";
 	}
 	
+	@GetMapping(value="/deleteArtista/{id}")
+	public String deleteArtista (@PathVariable(value="invitado")Invitado invitado, Model model,HttpSession session) {
+		Evento evento = (Evento) session.getAttribute("Evento");
+		evento.getInvitados().remove(invitado);
+		return "Eliminado";
+	}
+	
 	@GetMapping(value="/list")
 	public String list(Model model) {
-		List<Evento> eventos = srvEvento.findAll();
-		model.addAttribute("eventos",eventos);
+		List<Invitado> invitados = srvInvitado.findByArtistaInvitado(BuscarArtista());
+		model.addAttribute("invitados",invitados);
+		
 		model.addAttribute("title","Listado de Eventos");
 		return "evento/list";
 	}
 	
 	@PostMapping(value="/save")//https://localhost:8080/Evento/create
-	public String save(@Validated Evento evento, BindingResult result,Model model,SessionStatus status, RedirectAttributes flash, HttpSession session) {
+	public String save(@Validated Evento evento, BindingResult result,Model model,SessionStatus status, RedirectAttributes flash) {
+		try {
+			String message = "Evento agregado con exito";
+			String titulo = "Registro de un nuevo Evento";
+			if(evento.getIdEvento() != null) {
+				message = "Evento actualizado con exito";
+				titulo = "Actualizando Evento " + evento.getNombre();
+			}
+			if(result.hasErrors()) {
+				model.addAttribute("title",titulo);
+				model.addAttribute("error", "Complete todos los campos");
+				List<Cliente> clientes = srvCliente.findAll();
+				model.addAttribute("clientes",clientes);
+				return "evento/form";
+			}
+			/*
+			 * Evento eventoSession = (Evento) session.getAttribute("Evento"); for(Invitado
+			 * i : eventoSession.getInvitados()) { evento.getInvitados().add(i); }
+			 * 
+			 * srvEvento.save(evento); status.setComplete();
+			 * flash.addFlashAttribute("success", message);
+			 */
+			Invitado invitado = new Invitado();
+			invitado.setEvento(evento);
+			invitado.setArtistaInvitado(this.BuscarArtista());
+			invitado.setTipo_pago("E");
+			evento.getInvitados().add(invitado);
+			srvEvento.save(evento);
+			flash.addFlashAttribute("success", message);
+			
+			
+		}
+		catch(Exception ex) {
+			flash.addFlashAttribute("success", ex.getMessage());
+		}
+		return "redirect:/evento/list";
+	}
+	
+	@PostMapping(value="/guardar")//https://localhost:8080/Evento/create
+	public String guardar(@Validated Evento evento, BindingResult result,Model model,SessionStatus status, RedirectAttributes flash, HttpSession session) {
 		try {
 			String message = "Evento agregado con exito";
 			String titulo = "Registro de un nuevo Evento";
@@ -128,7 +205,7 @@ public class EventoController {
 		catch(Exception ex) {
 			flash.addFlashAttribute("success", ex.getMessage());
 		}
-		return "redirect:/evento/list";
+		return "redirect:/";
 	}
 	
 	@PostMapping(value = "/add", produces="application/json")
