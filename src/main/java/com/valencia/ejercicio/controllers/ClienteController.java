@@ -26,7 +26,7 @@ public class ClienteController {
 		model.addAttribute("title","Registro de nuevo Cliente");
 		model.addAttribute("cliente",cliente);model.addAttribute("cliente",cliente);
 		
-		return "Cliente/form";
+		return "cliente/form";
 	}
 	
 	@GetMapping(value="/retrieve/{id}")
@@ -40,7 +40,7 @@ public class ClienteController {
 		model.addAttribute("cliente",cliente);
 		model.addAttribute("title","Registro de "+" " + cliente.getNombre());
 		
-		return "Cliente/card";
+		return "cliente/card";
 		}
 	}
 	
@@ -70,6 +70,6 @@ public class ClienteController {
 	public String save(Cliente cliente, Model model) {
 		
 		this.srvCliente.save(cliente);
-		return "redirect:/cliente/list";
+		return "redirect:/evento/reservar";
 	}
 }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout :: frgHead">
+</head>
+<body>
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<header th:replace="layout :: frgHeader"></header>
+
+	<section class="breadcumb-area bg-img bg-overlay"
+		th:style="'background-image: url('+ @{/img/bg-img/breadcumb2.jpg}+');'">
+		<div class="bradcumbContent">
+			<p th:text="${title}"></p>
+			<h2>Cliente</h2>
+		</div>
+	</section>
+	<!-- ##### Breadcumb Area End ##### -->
+
+	<!-- ##### Login Area Start ##### -->
+	<section class="contact-area mt-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="contact-content">
+						<form th:action="@{/cliente/save}" enctype="multipart/form-data"
+							th:object="${cliente}" method="post">
+							<div class="form-group ">
+								<div class="row d-flex align-items-center">
+									<div class="col-1">
+										<i class="fa fa-font fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="text" class="form-control"
+											placeholder="Nombre" th:field="*{nombre}">
+										<small class="invalid-feedback"
+											th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+									</div>
+
+									<div class="col-1">
+										<i class="fa fa-font fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="text" class="form-control" placeholder="Apellido"
+											th:field="*{apellido}"> <small class="invalid-feedback"
+											th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+									</div>
+
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="row d-flex align-items-center">
+									<div class="col-1">
+										<i class="fa fa-id-badge fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="text" class="form-control"
+											placeholder="Cedula" th:field="*{cedula}">
+										<small class="invalid-feedback"
+											th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></small>
+									</div>
+
+									<div class="col-1">
+										<i class="fa fa-location-arrow fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="text" class="form-control" placeholder="Lugar Nacimiento"
+											th:field="*{lugarNacimiento}"> <small class="invalid-feedback"
+											th:if="${#fields.hasErrors('lugarNacimiento')}" th:errors="*{lugarNacimiento}"></small>
+									</div>
+
+								</div>
+							</div>
+							<div class="form-group ">
+								<div class="row d-flex align-items-center">
+									<div class="col-1">
+										<i class="fa fa-calendar fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="date" class="form-control" th:field="*{fechaNacimiento}">
+										<small class="invalid-feedback"
+											th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></small>
+									</div>
+									<div class="col-1">
+										<i class="fa fa-phone fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="text" class="form-control"
+											placeholder="Telefono" th:field="*{telefono}">
+										<small class="invalid-feedback"
+											th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+									</div>
+
+
+								</div>
+							</div>
+							<div class="form-group ">
+							<div class="row d-flex align-items-center">
+								<div class="col-1">
+										<i class="fa fa-envelope fa-2x"></i>
+									</div>
+									<div class="col-5">
+										<input type="text" class="form-control"
+											placeholder="Correo electr&oacute;nico" th:field="*{correoElectronico}">
+										<small class="invalid-feedback"
+											th:if="${#fields.hasErrors('correoElectronico')}" th:errors="*{correoElectronico}"></small>
+									</div>
+								<button type="submit" class="btn oneMusic-btn mt-30">
+									<i class="fa fa-check"></i> &nbsp;Guardar
+								</button>
+								&nbsp; &nbsp;
+								<a th:href="@{/}" class="btn oneMusic-btn mt-30">&nbsp;Cancelar <i class="fa fa-times"></i></a>
+								</div>
+							</div>
+							<input type="hidden" th:field="*{idPersona}" />
+						</form>
+						<br> <br>
+<!-- 						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+	<br>
+	<br>
+	<br>
+
+<!-- 	
+
+	<!-- ##### Login Area End ##### -->
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+	
+</body>
+</html>

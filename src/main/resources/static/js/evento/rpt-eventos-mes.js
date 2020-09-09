@@ -1,6 +1,6 @@
 function report() {
 	$.ajax({
-		url : "/evento/dataRptEventosArtistas",
+		url : "/evento/dataRptEventoMes",
 		method : 'GET',
 		success : function(response) {
 			console.log(response);
@@ -12,7 +12,7 @@ function report() {
 			$.each(response, function(i, item) {
 				console.log(item);
 				toData.push(item.eventos);
-				toLabels.push(item.artista);
+				toLabels.push(item.mes);
 				toColors.push(getRandomColor());
 			});
 
@@ -42,7 +42,7 @@ function report() {
 						},
 						title: {
 							display: true,
-							text: 'Número de eventos'
+							text: 'Número de eventos por mes'
 						}
 					}
 				});
@@ -57,8 +57,6 @@ function report() {
 	
 }
 
-
-
-$(document).ready(function(){
-	report();			
+$(document).ready(function() {
+	report();
 });

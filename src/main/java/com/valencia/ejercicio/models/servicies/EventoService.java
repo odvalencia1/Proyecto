@@ -2,10 +2,10 @@ package com.valencia.ejercicio.models.servicies;
 
 import java.math.BigInteger;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 
@@ -16,24 +16,24 @@ import org.springframework.transaction.annotation.Transactional;
 import com.valencia.ejercicio.models.dao.IEvento;
 import com.valencia.ejercicio.models.dao.IInvitado;
 import com.valencia.ejercicio.models.entities.Evento;
-<<<<<<< HEAD
+
 import com.valencia.ejercicio.reporting.RptEventoArtista;
-=======
+import com.valencia.ejercicio.reporting.RptEventoMes;
 import com.valencia.ejercicio.models.entities.Invitado;
->>>>>>> ccc5c3c5911bb6ea9230c1c7d010659173c9bc99
+
 
 @Service
 public class EventoService implements IEventoService {
 	@Autowired//Inyeccion de dependencia
 	private IEvento dao;
 	
-<<<<<<< HEAD
+
 	@PersistenceContext
 	private EntityManager em; 
-=======
+
 	@Autowired
 	private IInvitado daoInvitado;
->>>>>>> ccc5c3c5911bb6ea9230c1c7d010659173c9bc99
+
 	
 	@Override
 	@Transactional
@@ -80,6 +80,19 @@ public class EventoService implements IEventoService {
 		List<Object[]> datos = query.getResultList();
 		return datos.stream()
 				.map(r-> new RptEventoArtista((String)r[0],(BigInteger)r[1] ))
+				.collect(Collectors.toList());
+	}
+	
+	@Override
+	public List<RptEventoMes> rptEventoMes(Integer id) {
+		StoredProcedureQuery query = em.createStoredProcedureQuery("eventos_por_mes");
+		query.registerStoredProcedureParameter("pr_artista", Integer.class, ParameterMode.IN);
+		query.setParameter("pr_artista", id);	
+		query.execute();
+		query.execute();
+		List<Object[]> datos = query.getResultList();
+		return datos.stream()
+				.map(r-> new RptEventoMes((String)r[0],(BigInteger)r[1] ))
 				.collect(Collectors.toList());
 	}
 

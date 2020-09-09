@@ -165,18 +165,9 @@ public class Artista implements Serializable  {
 	
 
 	
-<<<<<<< HEAD
 	
-	public List<Evento> getEventos() {
-		return eventos;
-	}
+	
 
-	public void setEventos(List<Evento> eventos) {
-		this.eventos = eventos;
-	}
-	
-=======
->>>>>>> ccc5c3c5911bb6ea9230c1c7d010659173c9bc99
 	@JsonIgnore
 	@OneToMany(mappedBy="artista", fetch=FetchType.LAZY) 
 	private List<Integrante> integrantes;

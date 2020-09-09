@@ -29,6 +29,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
+				<p>Antes de registrar un evento asegurese de estar registrado como cliente</p>
+				<a th:href="@{/cliente/create}" class="btn oneMusic-btn mt-30">&nbsp;Registrar</a>
+				
+				</div>
+				</div>
+				<br>
+				<br>
+				<div class="row">
+				<div class="col-12">
 					<div class="contact-content">
 						<form th:action="@{/evento/guardar}" enctype="multipart/form-data"
 							th:object="${Evento}" method="post">

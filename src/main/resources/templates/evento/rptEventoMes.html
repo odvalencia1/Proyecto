@@ -16,22 +16,20 @@
 	<section class="breadcumb-area bg-img bg-overlay"
 		th:style="'background-image: url('+ @{/img/bg-img/breadcumb3.jpg}+');'">
 		<div class="bradcumbContent">
-			<h2>REPORTE EVENTOS POR ARTISTAS</h2>
+			<h2>REPORTE EVENTOS POR MES</h2>
 		</div>
 	</section>
-	<section class="contact-area mt-100">
-
-
-		<div class="container">
-
-			<div class="row">
+	<div class="contact-area mt-100">
+        <div class="container">
+            <!-- div class="row">
+            	<canvas id="chart-area-1"></canvas>            	
+            </div> -->
+            <div class="row">
             	<!--  canvas id="chart-area-2" style="display: block; width: 349px; height: 174px;" width="349" height="174" class="chartjs-render-monitor"></canvas>-->
             	<canvas id="canvas" style="display: block; width: 654px; height: 327px;" width="654" height="327" class="chartjs-render-monitor"></canvas>
             </div>
-
-		</div>
-
-	</section>
+        </div>
+    </div>
 	<br>
 	<br>
 	<br>
@@ -40,7 +38,7 @@
 	<!-- ##### Login Area End ##### -->
 	<footer th:replace="layout :: frgFooter"></footer>
 	<div th:replace="layout :: frgScripts"></div>
-	<script th:src="@{/js/evento/rpt-eventos-artistas.js}"></script>
+	<script th:src="@{/js/evento/rpt-eventos-mes.js}"></script>
 	
 </body>
 </html>
