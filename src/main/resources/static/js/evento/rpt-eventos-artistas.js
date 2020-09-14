@@ -3,8 +3,6 @@ function report() {
 		url : "/evento/dataRptEventosArtistas",
 		method : 'GET',
 		success : function(response) {
-			console.log(response);
-
 			var toData = [];
 			var toLabels = [];
 			var toColors = [];
@@ -23,14 +21,13 @@ function report() {
 					backgroundColor : getRandomColor(),
 					borderColor : getRandomColor(),
 					borderWidth : 1,
-					
 					data : toData
 				} ]
 
 			};
 			
-			window.onload = function() {
-				console.log("r");
+			$(document).ready(function() {
+				console.log(response);
 				var ctx = document.getElementById('canvas').getContext('2d');
 				window.myBar = new Chart(ctx, {
 					type: 'bar',
@@ -47,7 +44,7 @@ function report() {
 					}
 				});
 
-			};
+			});
 
 		},
 		error : function(err) {

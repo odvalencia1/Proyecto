@@ -37,6 +37,7 @@ import com.valencia.ejercicio.models.servicies.IEventoService;
 import com.valencia.ejercicio.models.servicies.InvitadoService;
 import com.valencia.ejercicio.models.servicies.UsuarioService;
 import com.valencia.ejercicio.reporting.RptEventoArtista;
+import com.valencia.ejercicio.reporting.RptEventoArtistaGeneroMusical;
 import com.valencia.ejercicio.reporting.RptEventoMes;
 
 
@@ -246,7 +247,23 @@ public class EventoController {
 		}
 	}
 	
-
+	@GetMapping(value = "/rptEventoArtistaGeneroMusical")
+	public String rptEventoArtistaGeneroMusical(Model model) {
+		return "evento/rptEventoArtistaGeneroMusical";
+	}
+	
+	@GetMapping(value = "/dataRptEventoArtistaGeneroMusical", produces="application/json")
+	public @ResponseBody List<List<RptEventoArtistaGeneroMusical>> dataRptEventoArtistaGeneroMusical(Model model) {				
+		try {
+			List<Evento> eventos = this.srvEvento.findAll();
+			model.addAttribute("eventos",eventos);
+			return this.srvEvento.rptEventoArtistaGeneroMusical(eventos);
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		}		
+	}
+	
 	@PostMapping(value = "/add", produces="application/json")
 	public @ResponseBody Object add(@RequestBody @Valid Invitado invitado, 
 			BindingResult result, Model model, HttpSession session) {				

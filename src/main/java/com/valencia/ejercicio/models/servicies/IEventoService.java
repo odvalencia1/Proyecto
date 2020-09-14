@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.valencia.ejercicio.models.entities.Evento;
 import com.valencia.ejercicio.reporting.RptEventoArtista;
+import com.valencia.ejercicio.reporting.RptEventoArtistaGeneroMusical;
 import com.valencia.ejercicio.reporting.RptEventoMes;
 
 public interface IEventoService {
@@ -13,5 +14,7 @@ public interface IEventoService {
 	public List<Evento> findAll();
 	public List<RptEventoArtista> rptEventoArtista();
 	public List<RptEventoMes> rptEventoMes(Integer id);
+	public List<List<RptEventoArtistaGeneroMusical>> rptEventoArtistaGeneroMusical(List<Evento> eventos);
+	
 	
 }

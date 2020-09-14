@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout :: frgHead">
+</head>
+<body>
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="lds-ellipsis">
+			<div></div>
+
+		</div>
+	</div>
+	<header th:replace="layout :: frgHeader"></header>
+	<section class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(/img/bg-img/breadcumb3.jpg);">
+		<div class="bradcumbContent">
+			<h2>Mensajes</h2>
+		</div>
+	</section>
+	<section class="contact-area mt-100">
+
+
+		<div class="container">
+
+			<!-- Lista integrante -->
+
+			<table class="table table-hover">
+				<thead class="bg-light">
+					<tr>
+						<th>
+							<div class="row">
+								<div class="col-sm-1">
+									<i class="fa fa-user"></i>
+								</div>
+
+								<div class="col-sm">
+									<h6>Remitente</h6>
+								</div>
+							</div>
+						</th>
+
+						<th>
+
+							<div class="row">
+								<div class="col-sm-1"> <i class="fa fa-at"></i></div>
+
+								<div class="col-sm"><h6>Correo</h6></div>
+							</div>
+							 
+
+						</th>
+						<th>
+						
+							<div class="row">
+								<div class="col-sm-1"><i class="fa fa-inbox"></i></div>
+
+								<div class="col-sm"><h6>Motivo</h6></div>
+							</div>
+						
+						
+						</th>
+						<th>
+						
+							<div class="row">
+								<div class="col-sm-1"> <i class="fa fa-envelope"></i> </div>
+
+								<div class="col-sm"><h6>Mensaje</h6></div>
+							</div>
+						
+						</th>
+
+						<th>
+						
+							<div class="row">
+								<div class="col-sm-1"></div>
+
+								<div class="col-sm"></div>
+							</div>
+						
+						<h6>Eliminar</h6> </i></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="m : ${mensajes}">
+						<td th:text="${m.nombre}"></td>
+						<td th:text="${m.correo}"></td>
+						<td th:text="${m.motivo}"></td>
+						<td th:text="${m.mensaje}"></td>
+
+
+						<td>
+							<button th:onclick="'eliminar('+${m.idMensaje}+')'"
+								class="btn btn-xs  btn-4 btn-secondary">
+								<i class="fa fa-trash"></i>
+
+							</button>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</section>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+	<!-- ##### Login Area End ##### -->
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+	<script th:src="@{/js/integrante/delete-integrante.js}"></script>
+</body>
+</html>

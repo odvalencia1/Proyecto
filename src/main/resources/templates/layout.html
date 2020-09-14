@@ -17,7 +17,7 @@
 
 <!-- Stylesheet -->
 <link rel="stylesheet" th:href="@{/css/integrantes-style.css}">
-
+<link rel="stylesheet" th:href="@{/vendor/all.min.css}">
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
@@ -46,7 +46,7 @@
                     <nav class="classy-navbar justify-content-between" id="oneMusicNav">
 
                         <!-- Nav brand -->
-                        <a th:href="@{/}" class="nav-brand"><img th:src="@{/img/core-img/logo.png}" alt=""></a>
+                        <a th:href="@{/}" class="nav-brand"><img th:src="@{/img/core-img/music_land_logo.png}" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -71,7 +71,7 @@
                                             <li><a th:href="@{/evento/reservar}">Crear Evento</a></li>
                                             </ul>
                                     </li>
-                                        <li><a th:href="@{/contact}">Contactos</a></li>
+                                        <li><a th:href="@{/mensaje/create}">Contactos</a></li>
                                 </ul>
 
                                 <!-- Login/Register & Cart Button -->
@@ -105,7 +105,7 @@
 
 						<!-- Nav brand -->
 						<a th:href="@{/}" class="nav-brand"><img
-							th:src="@{/img/core-img/logo.png}" alt=""></a>
+							th:src="@{/img/core-img/music_land_logo.png}" alt=""></a>
 
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
@@ -132,7 +132,7 @@
 											<li><a th:href="@{/integrante/add}">Integrantes</a></li>
 										</ul></li>
 										<li><a th:href="@{/evento/rptEventoMes}">Reporte</a></li>
-									<li><a th:href="@{/contact}">Contactos</a></li>
+									<li><a th:href="@{/mensaje/create}">Contactos</a></li>
 								</ul>
 
 								<!-- Login/Register & Cart Button -->
@@ -206,10 +206,10 @@
 									<li><a href="#">Reportes</a>
 										<ul class="dropdown">
 											<li><a th:href="@{/evento/rptEventosArtistas}">Eventos por Artista</a></li>
-
+											<li><a th:href="@{/evento/rptEventoArtistaGeneroMusical}">Eventos por G&eacute;nero</a></li>
 											</ul></li>
 
-									<li><a th:href="@{/contact}">Contactos</a></li>
+									<li><a th:href="@{/mensaje/create}">Contactos</a></li>
 								</ul>
 
 								<!-- Login/Register & Cart Button -->

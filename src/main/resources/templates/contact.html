@@ -35,7 +35,7 @@
                     <div class="contact-content mb-100">
                         <!-- Title -->
                         <div class="contact-title mb-50">
-                            <h5>Información de Contacto</h5>
+                            <h5>Informaci&oacute;n de Contacto</h5>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -43,7 +43,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>
                             </div>
-                            <p>1481 Creekside Lane Avila Beach, CA 931</p>
+                            <p>Latacunga - ESPE Campus Belisario Quevedo</p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -51,7 +51,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p>+53 345 7953 32453</p>
+                            <p>+593 989685098 / +593 98 748 8730</p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -59,7 +59,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                            <p>yourmail@gmail.com</p>
+                            <p>hdcalapaqui@espe.edu.ec / odvalencia@espe.edu.ec</p>
                         </div>
 
                         <!-- Contact Social Info -->
@@ -78,7 +78,7 @@
                 <div class="col-12 col-lg-9">
                     <!-- ##### Google Maps ##### -->
                     <div class="map-area mb-100">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22236.40558254599!2d-118.25292394686001!3d34.057682914027104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z4Kay4Ka4IOCmj-CmnuCnjeCmnOCnh-CmsuCnh-CmuCwg4KaV4KeN4Kav4Ka-4Kay4Ka_4Kar4KeL4Kaw4KeN4Kao4Ka_4Kav4Ka84Ka-LCDgpq7gpr7gprDgp43gppXgpr_gpqgg4Kav4KeB4KaV4KeN4Kak4Kaw4Ka-4Ka34KeN4Kaf4KeN4Kaw!5e0!3m2!1sbn!2sbd!4v1532328708137" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.2117866964086!2d-78.58683168567595!3d-0.9990656356610471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d4639e3fb9755f%3A0x22fe7f63301b5fee!2sESPE%20Campus%20Belisario%20Quevedo!5e0!3m2!1ses-419!2sec!4v1599658684108!5m2!1ses-419!2sec" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
 
@@ -103,30 +103,31 @@
                 <div class="col-12">
                     <!-- Contact Form Area -->
                     <div class="contact-form-area">
-                        <form action="#" method="post">
+                    
+                        <form th:action="@{/mensaje/save}" th:object="${mensaje}" method="post">
                             <div class="row">
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="name" placeholder="Name">
+                                        <input type="text" class="form-control"  placeholder="Nombre" th:field="*{nombre}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" placeholder="E-mail">
+                                        <input type="email" class="form-control"  placeholder="Correo" th:field="*{correo}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                        <input type="text" class="form-control"  placeholder="Motivo" th:field="*{motivo}" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                        <input type="text" name="message" class="form-control"  cols="30" rows="10" placeholder="Mensaje" th:field="${mensaje}" required>
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <button class="btn oneMusic-btn mt-30" type="submit">Enviar<i class="fa fa-angle-double-right"></i></button>
+                                    <button type="submit" class="btn oneMusic-btn mt-30" >Enviar<i class="fa fa-angle-double-right"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -134,6 +135,8 @@
                 </div>
             </div>
         </div>
+        
+        
     </section>
     <!-- ##### Contact Area End ##### -->
  <footer th:replace="layout :: frgFooter"></footer>

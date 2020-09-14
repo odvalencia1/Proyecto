@@ -29,7 +29,7 @@ function report() {
 
 			};
 			
-			window.onload = function() {
+			$(document).ready( function() {
 				console.log("r");
 				var ctx = document.getElementById('canvas').getContext('2d');
 				window.myBar = new Chart(ctx, {
@@ -47,7 +47,7 @@ function report() {
 					}
 				});
 
-			};
+			});
 
 		},
 		error : function(err) {
